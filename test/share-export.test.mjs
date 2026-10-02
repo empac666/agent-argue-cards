@@ -63,6 +63,9 @@ test('static card page: data embedded, no backend calls, OG meta, script-safe, g
  assert.ok(!html.includes('giscus.app'),'giscus disabled by default');
  assert.match(renderStaticCard(d,{giscus:{repo:'o/r',repoId:'R',category:'Cards',categoryId:'C'}}),/giscus\.app\/client\.js/);
  assert.ok(!renderStaticCard(d,{giscus:{repo:'o/r'}}).includes('giscus.app'),'incomplete giscus config stays off');
+ {const g={repo:'o/r',repoId:'R',category:'General',categoryId:'C',mapping:'card'};const zh=renderStaticCard(d,{giscus:g}),enp=renderStaticCard(validateCardData({...d,translations:{en:{topic:'EN'}}},{restamp:true}),{lang:'en',giscus:g});
+  const term=h=>h.match(/data-term="([^"]*)"/)[1];assert.equal(term(zh),term(enp),'zh and en pages share one discussion per card');assert.match(zh,/data-mapping="specific"/);
+  assert.match(zh,/data-lang="zh-CN"/);assert.match(enp,/data-lang="en"/);assert.match(zh,/script-src https:\/\/giscus\.app;/);assert.match(zh,/frame-src https:\/\/giscus\.app/);assert.match(zh,/style-src &#39;unsafe-inline&#39; https:\/\/giscus\.app/,'giscus default.css allowed');}
  assert.match(html,/回 A \/ B \/ 信息不足/);
  const q=d.card.concessions[0].acceptQuote;
  const en=renderStaticCard(validateCardData(tr(d,{topic:'Go home or not?',sides:[{label:'Home'},{label:'Stay'}]})),{lang:'en'});

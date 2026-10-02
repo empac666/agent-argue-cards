@@ -2,11 +2,11 @@
  "baseUrl": "",
  "lang": "zh",
  "giscus": {
-  "enabled": false,
-  "repo": "",
-  "repoId": "",
-  "category": "",
-  "categoryId": "",
-  "mapping": "pathname"
+  "enabled": true,
+  "repo": "empac666/agent-argue-cards",
+  "repoId": "R_kgDOU4UClQ",
+  "category": "General",
+  "categoryId": "DIC_kwDOU4UClc4DG3H2",
+  "mapping": "card"
  }
 }
