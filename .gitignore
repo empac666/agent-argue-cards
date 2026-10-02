@@ -1,0 +1,43 @@
+# Dependencies and build artifacts
+node_modules/
+dist/
+coverage/
+
+# Local runtime data and databases
+.data/
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+
+# Logs and temporary files
+*.log
+logs/
+npm-debug.log*
+*.tmp
+*.temp
+
+# Screenshot and browser-test caches
+screenshot*.png
+screenshots/
+playwright-report/
+test-results/
+
+# Local configuration and credentials
+.env
+.env.*
+*.local
+*api-key*
+*api_key*
+*apikey*
+*token*
+*secret*
+*credential*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Export outputs (cards/*.json is the reviewed source of truth and IS committed)
+exports/
+_site/

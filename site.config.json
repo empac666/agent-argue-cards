@@ -1,0 +1,12 @@
+{
+ "baseUrl": "",
+ "lang": "zh",
+ "giscus": {
+  "enabled": false,
+  "repo": "",
+  "repoId": "",
+  "category": "",
+  "categoryId": "",
+  "mapping": "pathname"
+ }
+}

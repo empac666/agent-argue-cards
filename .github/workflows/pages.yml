@@ -1,0 +1,72 @@
+# 草稿：从已提交、已人工审核的 cards/*.json 构建静态站并部署到 GitHub Pages。
+# - 只允许手动触发（workflow_dispatch），不会因 push 自动运行；
+# - 不调用任何模型 CLI / API，CI 里没有也不需要任何模型密钥；
+# - 需要仓库所有者先在 Settings → Pages 选择「GitHub Actions」作为来源（目前未开启，也不要在私有阶段开启）。
+name: Pages (draft, manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: '输入 deploy 确认部署 cards/ 里的已审核卡片'
+        required: true
+        default: 'no'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: ${{ github.event.inputs.confirm == 'deploy' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Tests (no model calls)
+        run: npm test
+      - name: CJK fonts for OG images
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Build static site from reviewed cards
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+          # GitHub 托管 runner 上 Chrome 沙箱常因用户命名空间受限而无法启动；这里只渲染本仓库生成的已转义页面。
+          ARGUE_CHROME_NO_SANDBOX: '1'
+        run: node scripts/export-cards.mjs site --cards cards --out _site --config site.config.json --base-url "${{ steps.pages.outputs.base_url }}/"
+      - name: Fail closed unless the artifact is only generated pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f _site/index.html
+          # 只允许生成器产出的文件类型
+          unexpected=$(find _site -type f ! -name '*.html' ! -name '*.png' ! -name '.nojekyll' -print)
+          if [ -n "$unexpected" ]; then echo "unexpected files: $unexpected"; exit 1; fi
+          # 本机路径、内部接口、常见密钥格式；grep 返回 0=命中（失败）、1=未命中（通过）、其他=出错（失败）
+          set +e
+          grep -rIlE 'api/rounds|/home/|/workspace/|/Users/|C:\\Users|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{30,}|xox[abprs]-|-----BEGIN [A-Z ]*PRIVATE KEY' _site
+          rc=$?
+          set -e
+          if [ "$rc" -ne 1 ]; then echo "scan failed or matched (rc=$rc)"; exit 1; fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

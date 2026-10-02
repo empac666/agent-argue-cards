@@ -1,0 +1,157 @@
+{
+ "schema": 1,
+ "id": "2e3a2e7a-bbc1-4156-87e5-f005fd0d2ddb",
+ "short": "2e3a2e7a",
+ "topic": "合租房租该平摊还是按房间大小分？",
+ "facts": "三人合租两室一厅加隔断，月租 9000 元，主卧带独卫约 18 平，次卧 12 平，隔断 8 平，水电另算。",
+ "lang": "zh",
+ "createdAt": "2026-10-02T01:58:03.713Z",
+ "card": {
+  "complete": true,
+  "sides": [
+   {
+    "key": "A",
+    "label": "平摊派",
+    "stance": "整套房租金平摊3000元，买的是平起平坐的整套房使用权，按房间差异折算会把公共成本不公平地转嫁给大房间。",
+    "bottomLine": "整套房9000元房租必须三人平摊，绝不接受用量尺和马桶折算把室友分出三六九等。",
+    "finalClaim": "合租房租每人平摊3000元最省心公平，能从根源上杜绝无休止的斤斤计较。",
+    "agent": "agy"
+   },
+   {
+    "key": "B",
+    "label": "折算派",
+    "stance": "主卧面积更大且配独卫，属额外私有资源，不按差异计价则大房间租客被隐形补贴，应按面积和独卫折算分摊。",
+    "bottomLine": "绝不放弃按房间面积和独卫折算分摊租金的底线",
+    "finalClaim": "合租房租应按房间面积和独卫折算分摊",
+    "agent": "agy-gptoss"
+   }
+  ],
+  "concessions": [
+   {
+    "by": "B",
+    "point": "B承认平摊方案可以避免因细微使用差异引发的纠纷，公共空间费用分配更简便",
+    "opponentRef": "A3",
+    "opponentQuote": "真要是连卧室面积和独卫都拿尺子精算，明天大家就会为了客厅沙发谁多坐了半小时、冰箱多占了一格吵得不可开交",
+    "acceptRef": "B3",
+    "acceptQuote": "按面积平摊可以避免因细微使用差异产生的纠纷，确保公共空间的费用分配更简便"
+   }
+  ],
+  "concessionNote": "",
+  "unresolved": {
+   "issue": "整套租金该视为三人共享公共生活权利的等价对等，还是以私人房间面积与独卫差异为主要定价依据",
+   "quotes": [
+    {
+     "ref": "A3",
+     "quote": "整套房9000元房租必须三人平摊，绝不接受用量尺和马桶折算把室友分出三六九等。"
+    },
+    {
+     "ref": "B3",
+     "quote": "绝不放弃按房间面积和独卫折算分摊租金的底线"
+    }
+   ]
+  },
+  "unresolvedConfirmed": true,
+  "issues": []
+ },
+ "speeches": [
+  {
+   "ref": "A1",
+   "side": "A",
+   "beat": 1,
+   "claim": "合租买的是整套房的生活圈和公共空间，人头平摊3000元才是最痛快、最公平的做法。",
+   "rebuttal": "",
+   "content": "整套房9000块买的是核心地段、大客厅、厨房阳台和公共便利，公共区域谁也没少用一寸。要是连卧室差几平米都要拿皮尺锱铢必较，那客厅沙发坐几小时、冰箱占几层是不是也得按分钟按体积收钱？一人三千痛痛快快，谁也不当二等租客，从第一天就算得斤斤计较，这日子根本合伙过不下去！",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B1",
+   "side": "B",
+   "beat": 1,
+   "claim": "合租房租应当按房间面积和独卫情况分摊",
+   "rebuttal": "",
+   "content": "主卧带独卫占 18 平米，价值明显高于次卧 12 平米和隔断 8 平米；如果按面积和独卫折算，租金更能反映实际使用空间和私密性，避免占大房间的租客付同等费用而产生不公平感。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A2",
+   "side": "A",
+   "beat": 2,
+   "claim": "平摊房租分的是均等的整套房生活权，按卧室面积和独卫折算是把公共成本转嫁给大房间。",
+   "rebuttal": "对方主张按房间面积和独卫折算分摊，错在把9000元整套房租全部归为私人卧室面积，忽视了地段、客厅和厨卫等绝大部分公共成本三人在均等消耗；真按面积折算，隔断间交极低房租却同等占用公共便利，本质上是让主卧替其他租客贴补生活成本，这在公共空间高频共用的合租里根本不成立。",
+   "content": "你口口声声说按面积折算才公平，可整套房租金大头买的是核心地段、客厅、厨房和阳台，大家做饭洗衣服、占用公共区域时谁少用了一平米？要是按面积把隔断砍到一千出头、让主卧背大几千，隔断天天在大客厅享受，主卧不就成了替全屋垫钱的冤大头？把本该平摊的公共生活成本全硬塞到别人卧室头上，这根本不是公平，是在把大房间当提款机！",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B2",
+   "side": "B",
+   "beat": 2,
+   "claim": "合租房租应按房间面积和独卫折算分摊，体现实际使用空间的价值。",
+   "rebuttal": "A 方把整套房的公共成本全部视为均等分摊，却忽视了私密空间的差异——主卧的独卫和更大面积本身就提供了额外的使用价值，按面积分摊并不会把公共成本转嫁给大房间，而是让每位租客为自己实际占用的私人空间买单。",
+   "content": "公共区域的费用的确需要均等分摊，但这已经包含在每个人的基准租金里；与此同时，主卧不仅面积更大，还配有独立卫生间，这些都是额外的私有资源。若不按这些差异计价，住大房的人实际承担了比小房间住客更多的私密空间成本，最终仍是对大房间的隐形补贴。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A3",
+   "side": "A",
+   "beat": 3,
+   "claim": "合租房租每人平摊3000元最省心公平，能从根源上杜绝无休止的斤斤计较。",
+   "rebuttal": "",
+   "content": "合租过日子图的是痛快体面，真要是连卧室面积和独卫都拿尺子精算，明天大家就会为了客厅沙发谁多坐了半小时、冰箱多占了一格吵得不可开交。一人三千买的是平起平坐的整套房使用权，大房小房大家轮流选或抽签各凭运气，别为了省几百块把好好的合租屋算计成勾心斗角的记账本！",
+   "bottomLine": "整套房9000元房租必须三人平摊，绝不接受用量尺和马桶折算把室友分出三六九等。",
+   "conceded": []
+  },
+  {
+   "ref": "B3",
+   "side": "B",
+   "beat": 3,
+   "claim": "合租房租应按房间面积和独卫折算分摊",
+   "rebuttal": "",
+   "content": "我承认，按面积平摊可以避免因细微使用差异产生的纠纷，确保公共空间的费用分配更简便。但主卧的独卫和更大的私密空间仍然应当由实际占用者承担相应费用，否则大房间的租客会被隐形补贴。",
+   "bottomLine": "绝不放弃按房间面积和独卫折算分摊租金的底线",
+   "conceded": [
+    "按面积平摊可以避免因细微使用差异产生的纠纷，确保公共空间的费用分配更简便"
+   ]
+  }
+ ],
+ "provenance": {
+  "debaters": [
+   "agy",
+   "agy-gptoss"
+  ],
+  "editor": "agy-claude"
+ },
+ "version": "9cbd50221c48",
+ "translations": {
+  "en": {
+   "version": "f706364ceb5b",
+   "sourceVersion": "9cbd50221c48",
+   "note": "Human translation of display text only; verbatim quotes stay in the original language.",
+   "topic": "Roommates: split the rent equally, or by room size?",
+   "facts": "Three people share a 2-bed flat plus a partitioned room. Rent is 9,000 CNY/month. Master bedroom with private bathroom ~18 m², second bedroom 12 m², partition room 8 m². Utilities billed separately.",
+   "sides": [
+    {
+     "label": "Split-equally",
+     "stance": "Everyone pays 3,000. You're buying equal use of the whole flat; pricing room differences unfairly shifts shared costs onto the big room.",
+     "bottomLine": "The 9,000 rent must be split three ways — no measuring tape or toilet count ranking roommates."
+    },
+    {
+     "label": "Pay-by-room",
+     "stance": "The bigger master bedroom with its own bathroom is an extra private resource. Without pricing it, the big-room tenant is quietly subsidised. Split by area and the private bathroom.",
+     "bottomLine": "Never giving up on splitting by room area and private bathroom."
+    }
+   ],
+   "concessions": [
+    {
+     "point": "admits an equal split avoids fights over small usage differences and makes shared-space costs simpler."
+    }
+   ],
+   "unresolved": {
+    "issue": "Is rent payment for an equal share of common living, or priced mainly by private room size and the private bathroom?"
+   }
+  }
+ }
+}

@@ -1,0 +1,159 @@
+{
+ "schema": 1,
+ "id": "87fd6807-3795-4ba6-a1ab-2e1232468f12",
+ "short": "87fd6807",
+ "topic": "春节回不回家过年？",
+ "facts": "小两口在上海工作，男方老家湖南、女方老家山东，春节假期 8 天，去年在男方家过的，今年各自父母都打电话催了。",
+ "lang": "zh",
+ "createdAt": "2026-10-02T01:55:07.552Z",
+ "card": {
+  "complete": true,
+  "sides": [
+   {
+    "key": "A",
+    "label": "归家派",
+    "stance": "今年按轮换规矩应回山东女方老家，老人盼的是家门口的烟火热闹与体面团圆，春运再累也是晚辈该扛的担当。",
+    "bottomLine": "去年回了男方家，今年就必须陪媳妇回山东老家过年，绝不能让老人一整年的眼巴巴期盼在异乡落空。",
+    "finalClaim": "今年春节必须回老家过年，路途再难也要回到老人扎根的热土。",
+    "agent": "agy"
+   },
+   {
+    "key": "B",
+    "label": "留沪派",
+    "stance": "春节留在上海更省钱省时，可将父母接来享受城市的舒适居住与便利配套，无需双方老人忍受春运折腾。",
+    "bottomLine": "我们绝不让老人必须回老家过年。",
+    "finalClaim": "今年春节不回家，留在上海过年，让父母来上海探访或自行过年。",
+    "agent": "agy-gptoss"
+   }
+  ],
+  "concessions": [
+   {
+    "by": "A",
+    "point": "A承认上海的现代居住条件与应急医疗配套确实优于老家",
+    "opponentRef": "B2",
+    "opponentQuote": "城市里有全年无休的医疗资源、温暖的居住环境和丰富的餐饮",
+    "acceptRef": "A3",
+    "acceptQuote": "我承认上海的现代居住条件和应急医疗配套确实比老家更完善、更让人省心"
+   }
+  ],
+  "concessionNote": "",
+  "unresolved": {
+   "issue": "春节究竟该回老家团聚还是留在上海过年，双方到最后仍无共识。",
+   "quotes": [
+    {
+     "ref": "A3",
+     "quote": "去年回了男方家，今年就必须陪媳妇回山东老家过年，绝不能让老人一整年的眼巴巴期盼在异乡落空。"
+    },
+    {
+     "ref": "B3",
+     "quote": "我们绝不让老人必须回老家过年。"
+    }
+   ]
+  },
+  "unresolvedConfirmed": true,
+  "issues": []
+ },
+ "speeches": [
+  {
+   "ref": "A1",
+   "side": "A",
+   "beat": 1,
+   "claim": "过年就必须回老家，老人等了一整年图的就是家门口的热闹与体面，留在上海根本算不上过年。",
+   "rebuttal": "",
+   "content": "去年既然回了湖南，今年8天假期正该轮到回山东，老人家连着打电话催，图的不就是年三十一大家子热腾腾围炉包饺子、走街串巷拜年的年味？真要是把老人折腾来上海挤在几十平出租屋里，出门不认路、进门转不开身，大年夜四目相对看电视，纯属花钱让老人买罪受。春运路上再挤再累也就这一趟，人回了老家迈进院子，老人的心才算真正落了地。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B1",
+   "side": "B",
+   "beat": 1,
+   "claim": "留在上海过年更省钱、更省时间，也能让父母感受都市的温暖。",
+   "rebuttal": "",
+   "content": "春节返乡往返沪湘、沪齐两趟机票与火车票费用高达数千元，且路途耗时近两天，压缩了实际团聚的时间。留在上海不仅能省下这笔开支，还能利用公司提供的年终奖金租个舒适民宿或酒店，让父母直接来上海探访，既避免了旅途劳累，也让他们体验大城市的节日氛围，真正做到‘省时省钱，情感更浓’。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A2",
+   "side": "A",
+   "beat": 2,
+   "claim": "把老人春运反向折腾来上海不仅根本不省钱省事，在冷清的大城市过年更是既没年味又让老人遭罪。",
+   "rebuttal": "对方所谓“省钱省时、感受都市温暖”在现实中根本不成立：春节把老人折腾来上海，车票加上翻倍的酒店民宿开销远超两个人返乡成本；且春节期间上海大量店铺歇业、街头空荡，让习惯熟人社交的老人困在异乡屋里无处可去、倍感冷清，所谓“都市温暖”纯属年轻人的一厢情愿。",
+   "content": "让上了年纪的老人在春运大潮里挤车奔波来上海，两边老人的路费加上春节期间价格翻倍的民宿酒店，哪有一分钱省得下来？更别说大过年的上海大批店铺关门歇业，街上冷冷清清，老人出门不认路、进门连个串门唠嗑的乡邻都没有，困在陌生房间里算哪门子感受都市温暖？年轻人自己怕赶路折腾，反倒让父母千里迢迢替你颠簸受累，这哪是孝敬老人，分明是花大价钱让他们背井离乡买罪受！",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B2",
+   "side": "B",
+   "beat": 2,
+   "claim": "留在上海过年更省钱、更省事，还能让老人享受舒适的居住和便利的城市配套。",
+   "rebuttal": "对方认为把老人折腾到上海既不省钱也让老人受罪，实际上交通费用和住宿费用在高峰期确实上升，但相比往返两次长途春运的累计费用与时间成本，整体支出并不比双趟返乡更高；而且上海的高质量酒店、便利的医疗和丰富的餐饮选择，可大幅提升老人春节的舒适度和安全感。",
+   "content": "春运期间回乡要花上数千元的往返票价，还要耗时两天，老人一年只有短短几天的团聚时间被路途拖延。若把他们接来上海，直接住酒店或民宿，费用与往返加上返乡期间的住宿相比并不逊色，甚至更划算；更重要的是，城市里有全年无休的医疗资源、温暖的居住环境和丰富的餐饮，让老人不必面对寒冷的乡间路途和陌生的春运人潮，真正做到省时省钱，且更安心。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A3",
+   "side": "A",
+   "beat": 3,
+   "claim": "今年春节必须回老家过年，路途再难也要回到老人扎根的热土。",
+   "rebuttal": "",
+   "content": "我承认上海的现代居住条件和应急医疗配套确实比老家更完善、更让人省心，但过年图的从来不是高档客房和城市便利。老人守在老宅望眼欲穿等了一整年，要的是推开院门满屋子的烟火气和街坊乡邻拜年的体面热闹，把他们架在上海这几间陌生屋子里算什么团圆？去年既然回了湖南，今年按规矩就该回山东女方家，春运再累也是做小辈该扛的担当，不能图自己省事敷衍老人。",
+   "bottomLine": "去年回了男方家，今年就必须陪媳妇回山东老家过年，绝不能让老人一整年的眼巴巴期盼在异乡落空。",
+   "conceded": [
+    "上海的现代居住环境与应急医疗配套确实比老家更有优势、更让人安心"
+   ]
+  },
+  {
+   "ref": "B3",
+   "side": "B",
+   "beat": 3,
+   "claim": "今年春节不回家，留在上海过年，让父母来上海探访或自行过年。",
+   "rebuttal": "",
+   "content": "我承认上海的居住条件和应急医疗配套确实更完善，能让父母更安心，但春节的核心是让老人感受团聚的温情，留在上海依然更省钱省时，且可以让父母享受城市的便利与舒适。",
+   "bottomLine": "我们绝不让老人必须回老家过年。",
+   "conceded": [
+    "上海的居住条件和应急医疗配套比老家更完善，能让父母更安心"
+   ]
+  }
+ ],
+ "provenance": {
+  "debaters": [
+   "agy",
+   "agy-gptoss"
+  ],
+  "editor": "agy-claude"
+ },
+ "version": "ee6182ec9160",
+ "translations": {
+  "en": {
+   "version": "7a0fefeaf15b",
+   "sourceVersion": "ee6182ec9160",
+   "note": "Human translation of display text only; verbatim quotes stay in the original language.",
+   "topic": "Go home for Chinese New Year, or stay put?",
+   "facts": "A young couple works in Shanghai. His family is in Hunan, hers in Shandong. The holiday is 8 days; last year they went to his family; this year both sets of parents are calling.",
+   "sides": [
+    {
+     "label": "Go-home",
+     "stance": "By the take-turns rule it's her family in Shandong this year. The parents want the hometown buzz and a proper reunion; the travel rush is the young couple's to bear.",
+     "bottomLine": "Last year was his family, so this year we must go to her family in Shandong — the parents' year-long wait can't end in disappointment."
+    },
+    {
+     "label": "Stay-in-Shanghai",
+     "stance": "Staying in Shanghai saves money and time; bring the parents over to enjoy city comforts instead of putting both sets through the travel rush.",
+     "bottomLine": "We will never make 'New Year must be in the hometown' a rule the parents are bound by."
+    }
+   ],
+   "concessions": [
+    {
+     "point": "admits Shanghai's modern housing and emergency medical care really are better than the hometown's."
+    }
+   ],
+   "unresolved": {
+    "issue": "Go home to reunite or stay in Shanghai — still no agreement at the end."
+   }
+  }
+ }
+}

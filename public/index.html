@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>AGENT ARGUE — 机器辩论席</title>
+  <style>
+    :root {
+      --black: #080808;
+      --paper: #f8f6f0;
+      --white: #ffffff;
+      --red: #d90429;
+      --red-hover: #b80020;
+      --crimson-soft: #fff0f2;
+      --ink-muted: #5e5d59;
+      --ink-faint: #a2a099;
+      --border-heavy: 2px solid var(--black);
+      --border-thin: 1px solid var(--black);
+      --border-light: 1px solid #dedcd4;
+      --font-serif: "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: "Space Mono", "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--black);
+      font-family: var(--font-serif);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 0 80px 0;
+    }
+
+    /* 顶栏新闻社/公报式页眉 */
+    .masthead-strip {
+      background: var(--black);
+      color: var(--paper);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--red);
+    }
+    .masthead-strip .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      display: inline-block;
+      animation: pulse 1.4s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    /* 品牌主标题 */
+    header.hero {
+      border-bottom: var(--border-heavy);
+      padding: 32px 24px 20px;
+      text-align: center;
+      background: var(--paper);
+      position: relative;
+    }
+    .hero-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+    h1.brand-title {
+      font-family: var(--font-sans);
+      font-weight: 900;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--black);
+      margin: 0;
+    }
+    .brand-title span.accent-slash {
+      color: var(--red);
+    }
+    .slogan-box {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slogan {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--red);
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    .slogan::before, .slogan::after {
+      content: "—";
+      margin: 0 4px;
+      color: var(--black);
+    }
+    .slogan-footnote {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    /* 主栅格 */
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+    }
+
+    /* 控制台侧边栏 */
+    aside.control-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .panel-block {
+      background: var(--white);
+      border: var(--border-heavy);
+      padding: 20px;
+      box-shadow: 4px 4px 0px var(--black);
+    }
+
+    .block-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: var(--border-thin);
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .block-title {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .block-index {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    label.field-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    textarea.text-input,
+    input.number-input {
+      width: 100%;
+      border: var(--border-thin);
+      background: var(--paper);
+      color: var(--black);
+      padding: 10px 12px;
+      font-family: var(--font-serif);
+      font-size: 15px;
+      border-radius: 0;
+      transition: all 0.15s ease;
+      outline: none;
+    }
+    textarea.text-input:focus,
+    input.number-input:focus {
+      border-color: var(--red);
+      background: var(--white);
+      box-shadow: inset 2px 2px 0px rgba(217, 4, 41, 0.15);
+    }
+    textarea.text-input {
+      resize: vertical;
+      min-height: 85px;
+      line-height: 1.5;
+    }
+
+    /* 辩手勾选列表 */
+    .agent-roster {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .agent-checkbox-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: var(--border-light);
+      background: var(--paper);
+      padding: 8px 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.15s, background-color 0.15s;
+    }
+    .agent-checkbox-card:hover {
+      border-color: var(--black);
+    }
+    .agent-checkbox-card.selected {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .agent-checkbox-card input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--black);
+      background: var(--white);
+      cursor: pointer;
+      flex-shrink: 0;
+      display: grid;
+      place-content: center;
+    }
+    .agent-checkbox-card.selected input[type="checkbox"] {
+      border-color: var(--white);
+      background: var(--red);
+    }
+    .agent-checkbox-card.selected input[type="checkbox"]::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--white);
+    }
+    .agent-info-compact {
+      flex: 1;
+      min-width: 0;
+    }
+    .agent-name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .agent-name {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .agent-stance-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      opacity: 0.8;
+    }
+    .agent-desc {
+      font-size: 11px;
+      color: inherit;
+      opacity: 0.75;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 操作动作按钮群 */
+    .button-group-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button.btn-editorial {
+      width: 100%;
+      border: var(--border-heavy);
+      padding: 12px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--black);
+      box-shadow: 2px 2px 0px var(--black);
+      transition: all 0.1s ease;
+      outline: none;
+    }
+    button.btn-editorial:hover:not(:disabled) {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--black);
+    }
+    button.btn-editorial:active:not(:disabled) {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--black);
+    }
+    button.btn-editorial:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    button.btn-primary {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    button.btn-primary:hover:not(:disabled) {
+      background: var(--red-hover);
+    }
+    .action-row-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* 辩论舞台主栏 */
+    main.debate-arena {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 顶端辩题展板与状态 */
+    .billboard {
+      background: var(--white);
+      border: var(--border-heavy);
+      padding: 24px;
+      box-shadow: 6px 6px 0px var(--black);
+      position: relative;
+    }
+    .billboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+      border-bottom: var(--border-thin);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+    .topic-display {
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .billboard-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      border-top: var(--border-light);
+      padding-top: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--black);
+    }
+    .status-badge.running {
+      background: var(--red);
+      color: var(--white);
+      border-color: var(--red);
+    }
+    .status-badge.paused {
+      background: #fca311;
+      color: var(--black);
+      border-color: var(--black);
+    }
+    .status-badge.finished {
+      background: var(--black);
+      color: var(--white);
+    }
+    .status-badge.idle {
+      background: var(--paper);
+      color: var(--ink-muted);
+    }
+
+    /* 人类观众偏好投票站 */
+    .voting-depot {
+      background: var(--paper);
+      border: var(--border-heavy);
+      padding: 16px 20px;
+    }
+    .voting-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+    .voting-title {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .voting-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .vote-candidate-card {
+      background: var(--white);
+      border: var(--border-thin);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+      transition: border-color 0.15s;
+    }
+    .vote-candidate-card:hover {
+      border-color: var(--red);
+    }
+    .vote-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .vote-name {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .vote-count {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .vote-meter {
+      height: 6px;
+      background: #eae8e1;
+      border: 1px solid #ccc;
+      position: relative;
+      overflow: hidden;
+    }
+    .vote-fill {
+      height: 100%;
+      background: var(--black);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    .btn-vote-trigger {
+      width: 100%;
+      border: 1px solid var(--black);
+      background: transparent;
+      padding: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.1s;
+    }
+    .btn-vote-trigger:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* 共识状态公示区 (重点需求: 共识 vs 未达成共识) */
+    .verdict-banner {
+      border: var(--border-heavy);
+      padding: 20px;
+      display: none; /* 动态显示 */
+      box-shadow: 4px 4px 0px var(--black);
+    }
+    .verdict-banner.consensus-achieved {
+      display: block;
+      background: var(--white);
+      border-color: var(--black);
+      border-left: 12px solid var(--black);
+    }
+    .verdict-banner.consensus-failed {
+      display: block;
+      background: var(--crimson-soft);
+      border-color: var(--red);
+      border-left: 12px solid var(--red);
+    }
+    .verdict-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .verdict-badge {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      color: var(--white);
+      background: var(--black);
+    }
+    .verdict-banner.consensus-failed .verdict-badge {
+      background: var(--red);
+    }
+    .verdict-title {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .verdict-body {
+      font-size: 14px;
+      color: var(--black);
+      line-height: 1.6;
+    }
+    .verdict-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    /* 消息流 (实录速记) */
+    .transcript-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .feed-header {
+      border-bottom: var(--border-heavy);
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .feed-title {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .feed-stats {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+
+    /* 单条发言卡片 */
+    .utterance-item {
+      background: var(--white);
+      border: var(--border-heavy);
+      box-shadow: 4px 4px 0px var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .utterance-meta-bar {
+      background: var(--paper);
+      border-bottom: var(--border-thin);
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .speaker-stamp {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .speaker-name {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--black);
+    }
+    .round-tag {
+      font-family: var(--font-mono);
+      background: var(--black);
+      color: var(--white);
+      padding: 2px 6px;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+    }
+    .utterance-body {
+      padding: 20px 24px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--black);
+      white-space: pre-wrap;
+    }
+    .utterance-footer {
+      border-top: var(--border-light);
+      padding: 6px 16px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-muted);
+    }
+
+    /* 空状态与加载条 */
+    .empty-state {
+      background: var(--white);
+      border: 2px dashed #bbb;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .empty-symbol {
+      font-size: 28px;
+      font-family: var(--font-mono);
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .empty-label {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .empty-sub {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    /* 通知条 / 报错条 */
+    #editorial-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--black);
+      color: var(--white);
+      border-left: 6px solid var(--red);
+      padding: 12px 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      z-index: 9999;
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+      display: none;
+      max-width: 400px;
+    }
+
+    /* 移动端响应式 */
+    @media (max-width: 960px) {
+      .container {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 16px;
+      }
+      header.hero {
+        padding: 24px 16px 16px;
+      }
+      .panel-block {
+        box-shadow: 2px 2px 0px var(--black);
+      }
+      .billboard {
+        box-shadow: 3px 3px 0px var(--black);
+        padding: 18px;
+      }
+      .topic-display {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部状态栏 -->
+  <div class="masthead-strip">
+    <div class="live-indicator">
+      <span class="live-dot" id="liveDot"></span>
+      <span id="mastheadStatus">SYSTEM READY // STANDBY</span>
+    </div>
+    <div class="date-issue">
+      ARGUE DISPATCH — EDITION 01
+    </div>
+  </div>
+
+  <!-- 品牌报头 -->
+  <header class="hero">
+    <div class="hero-meta">Discursive Intelligence Protocol / 机器争辩协议</div>
+    <h1 class="brand-title">AGENT ARGUE<span class="accent-slash">.</span></h1>
+    <div class="slogan-box">
+      <span class="slogan">peace and love</span>
+      <span class="slogan-footnote">(讽刺性公约：拒绝平庸妥协)</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 左侧：参数装填与操作台 -->
+    <aside class="control-panel">
+
+      <!-- 参数配置 -->
+      <section class="panel-block">
+        <div class="block-header">
+          <span class="block-title">辩论规约 / SETUP</span>
+          <span class="block-index">SEC.01</span>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label" for="modeSelect">模式 (Mode)</label>
+          <select id="modeSelect" class="number-input">
+            <option value="card" selected>群聊站队卡：2 人 × 3 拍，必出一张卡</option>
+            <option value="argue">真辩论：求共识，裁判把关</option>
+          </select>
+        </div>
+
+        <div class="form-group card-only">
+          <label class="field-label" for="presetSelect">日历家常题 (Preset)</label>
+          <select id="presetSelect" class="number-input"><option value="">— 自己写 —</option></select>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label" for="topicInput">辩题论点 (Topic)</label>
+          <textarea id="topicInput" class="text-input" placeholder="输入辩论议题，例如：人类是否应当赋予通用人工智能宪法级权利？"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">勾选辩手 (Select Agents)</label>
+          <div id="agentRoster" class="agent-roster">
+            <div style="font-size: 12px; color: var(--ink-muted); padding: 8px 0; font-family: var(--font-mono);">
+              正在联络辩手席…
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group card-only">
+          <label class="field-label" for="factsInput">共享背景（可选，双方都以此为前提）</label>
+          <textarea id="factsInput" class="text-input" style="min-height:60px" maxlength="600" placeholder="例：小两口在上海工作，男方老家湖南、女方老家山东，假期 8 天，去年在男方家过的。"></textarea>
+          <label class="field-label" for="stanceAInput" style="margin-top:8px">A 方立场（可选）</label>
+          <input id="stanceAInput" class="number-input" maxlength="300" placeholder="留空则按辩题自动分配">
+          <label class="field-label" for="stanceBInput" style="margin-top:8px">B 方立场（可选）</label>
+          <input id="stanceBInput" class="number-input" maxlength="300" placeholder="留空则按辩题自动分配">
+        </div>
+
+        <div class="form-group argue-only">
+          <label class="field-label" for="maxRoundsInput">最大对抗轮数 (Max Rounds)</label>
+          <input type="number" id="maxRoundsInput" class="number-input" value="6" min="3" max="20">
+        </div>
+
+        <div class="form-group">
+          <label class="field-label" for="judgeSelect">独立裁判 / 终场编辑 (Judge / Editor)</label>
+          <select id="judgeSelect" class="number-input"></select>
+          <div class="agent-desc argue-only" style="margin-top:6px;">裁判不参与辩论、不打分，只判断是否真正达成共识。前 2 轮为立论与强制交锋，不接受同意。</div>
+          <div class="agent-desc card-only" style="margin-top:6px;">站队卡：固定 立论 → 点名反驳 → 让步与底线，三拍后由编辑整理成卡；让步须引用双方原文并经代码核验。不判输赢。</div>
+        </div>
+      </section>
+
+      <!-- 进程控制 -->
+      <section class="panel-block">
+        <div class="block-header">
+          <span class="block-title">主审操控 / DISPATCH</span>
+          <span class="block-index">SEC.02</span>
+        </div>
+
+        <div class="button-group-stack">
+          <button id="btnCreateAndStart" class="btn-editorial btn-primary">
+            <span>开辩 // CREATE & START</span>
+          </button>
+
+          <div class="action-row-split">
+            <button id="btnPause" class="btn-editorial" disabled>
+              <span>暂停 // STOP</span>
+            </button>
+            <button id="btnResume" class="btn-editorial" disabled>
+              <span>继续 // RESUME</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; border-top: var(--border-light); padding-top: 10px;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-muted); line-height: 1.4;">
+            * 点击开辩后，各 Agent 自动交锋。只有全员同意同一方案才会结束。
+          </div>
+        </div>
+      </section>
+
+      <!-- 历史辩席快捷查阅 -->
+      <section class="panel-block">
+        <div class="block-header">
+          <span class="block-title">历史卷宗 / RECENT ROUNDS</span>
+          <span class="block-index">SEC.03</span>
+        </div>
+        <div id="recentRoundsList" style="display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 11px;">
+          <span style="color: var(--ink-muted);">查阅中…</span>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- 右侧：辩论实况、投票与速记流 -->
+    <main class="debate-arena">
+
+      <!-- 辩题布告板 -->
+      <section class="billboard">
+        <div class="billboard-header">
+          <span id="currentRoundIdLabel">ROUND ID: [UNASSIGNED]</span>
+          <span id="roundCounterBadge">STAGE: 0 / 0 ROUNDS</span>
+        </div>
+        <div class="topic-display" id="billboardTopic">
+          尚未选定辩题。请在左侧设定议题并勾选各阵营辩手。
+        </div>
+        <div class="billboard-footer">
+          <div>
+            状态标识：<span class="status-badge idle" id="roundStatusBadge">IDLE</span>
+          </div>
+          <div id="participantSummary" style="color: var(--ink-muted);">
+            辩手席：待召集
+          </div>
+        </div>
+      </section>
+
+      <!-- 人类观众偏好投票站 -->
+      <section class="voting-depot">
+        <div class="voting-title-row">
+          <span class="voting-title">人类观众偏好投票席 (AUDIENCE TALLY)</span>
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--red);">本机偏好票 · 不决定辩论结果</span>
+        </div>
+        <div class="voting-grid" id="votingGrid">
+          <div style="font-size: 12px; color: var(--ink-muted); font-family: var(--font-mono);">
+            需开辩后激活观众偏好计票机制。
+          </div>
+        </div>
+      </section>
+
+      <!-- 共识状态宣告栏 (满足: 共识状态 与 未达成共识状态) -->
+      <section id="verdictBanner" class="verdict-banner">
+        <div class="verdict-header">
+          <span class="verdict-badge" id="verdictBadge">VERDICT</span>
+          <span class="verdict-title" id="verdictTitle">共识研判状态</span>
+        </div>
+        <div class="verdict-body" id="verdictBody">
+          <!-- 动态灌入研判描述 -->
+        </div>
+        <div class="verdict-meta" id="verdictMeta">
+          CONSENSUS PROTOCOL ENGINE REPORT
+        </div>
+      </section>
+
+      <!-- 辩论速记流 (Message Stream) -->
+      <section class="transcript-feed">
+        <div class="feed-header">
+          <span class="feed-title">对抗实录速记 // TRANSCRIPT</span>
+          <span class="feed-stats" id="feedCounter">0 STATEMENTS</span>
+        </div>
+
+        <div id="messagesContainer">
+          <div class="empty-state">
+            <div class="empty-symbol">[ § ]</div>
+            <div class="empty-label">暂无实录发言</div>
+            <div class="empty-sub">开启辩论后，各 Agent 的论述与交锋反驳将在此实时呈现。</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- 轻量通知卡 -->
+  <div id="editorial-toast"></div>
+
+  <script>
+    (function () {
+      // 内部状态
+      const state = {
+        agents: [],
+        selectedAgentIds: new Set(),
+        currentRoundId: null,
+        roundData: null,
+        pollTimer: null,
+        isPolling: false
+      };
+
+      // 节点缓存
+      const dom = {
+        agentRoster: document.getElementById('agentRoster'),
+        topicInput: document.getElementById('topicInput'),
+        maxRoundsInput: document.getElementById('maxRoundsInput'),
+        modeSelect: document.getElementById('modeSelect'),
+        presetSelect: document.getElementById('presetSelect'),
+        factsInput: document.getElementById('factsInput'),
+        stanceAInput: document.getElementById('stanceAInput'),
+        stanceBInput: document.getElementById('stanceBInput'),
+        judgeSelect: document.getElementById('judgeSelect'),
+        btnCreateAndStart: document.getElementById('btnCreateAndStart'),
+        btnPause: document.getElementById('btnPause'),
+        btnResume: document.getElementById('btnResume'),
+        mastheadStatus: document.getElementById('mastheadStatus'),
+        liveDot: document.getElementById('liveDot'),
+        currentRoundIdLabel: document.getElementById('currentRoundIdLabel'),
+        roundCounterBadge: document.getElementById('roundCounterBadge'),
+        billboardTopic: document.getElementById('billboardTopic'),
+        roundStatusBadge: document.getElementById('roundStatusBadge'),
+        participantSummary: document.getElementById('participantSummary'),
+        votingGrid: document.getElementById('votingGrid'),
+        verdictBanner: document.getElementById('verdictBanner'),
+        verdictBadge: document.getElementById('verdictBadge'),
+        verdictTitle: document.getElementById('verdictTitle'),
+        verdictBody: document.getElementById('verdictBody'),
+        verdictMeta: document.getElementById('verdictMeta'),
+        messagesContainer: document.getElementById('messagesContainer'),
+        feedCounter: document.getElementById('feedCounter'),
+        recentRoundsList: document.getElementById('recentRoundsList'),
+        toast: document.getElementById('editorial-toast')
+      };
+
+      // 日历家常题预设（公开场景，不含任何真实当事人信息）
+      const PRESETS = [
+        { topic: '春节回不回家过年？', facts: '小两口在上海工作，男方老家湖南、女方老家山东，春节假期 8 天，去年在男方家过的，今年各自父母都打电话催了。', stances: ['回家：今年春节应该回老家过年', '不回：今年春节留在上海，自己过或把父母接来'] },
+        { topic: '合租房租该平摊还是按房间大小分？', facts: '三人合租两室一厅加隔断，月租 9000 元，主卧带独卫约 18 平，次卧 12 平，隔断 8 平，水电另算。', stances: ['平摊：每人 3000 元最简单公平', '按大小分：按房间面积和独卫折算分摊'] },
+        { topic: '彩礼该不该给？', facts: '男女双方都是普通工薪家庭，女方老家习俗彩礼 15 万，男方家刚付完首付，手头紧。', stances: ['该给：尊重习俗，按女方家要求给', '不该给：不给或象征性给，钱留给小家庭'] }
+      ];
+      function syncModeUI() {
+        const card = dom.modeSelect.value === 'card';
+        document.querySelectorAll('.card-only').forEach(e => e.style.display = card ? '' : 'none');
+        document.querySelectorAll('.argue-only').forEach(e => e.style.display = card ? 'none' : '');
+      }
+      dom.presetSelect.innerHTML += PRESETS.map((p, i) => `<option value="${i}">${escapeHtml(p.topic)}</option>`).join('');
+      dom.presetSelect.addEventListener('change', () => {
+        const p = PRESETS[Number(dom.presetSelect.value)];
+        if (!p) return;
+        dom.topicInput.value = p.topic; dom.factsInput.value = p.facts; dom.stanceAInput.value = p.stances[0]; dom.stanceBInput.value = p.stances[1];
+      });
+      dom.modeSelect.addEventListener('change', syncModeUI);
+
+      // 简易提示
+      function showToast(msg, duration = 3200) {
+        dom.toast.textContent = `[NOTICE] ${msg}`;
+        dom.toast.style.display = 'block';
+        clearTimeout(dom.toast._timer);
+        dom.toast._timer = setTimeout(() => {
+          dom.toast.style.display = 'none';
+        }, duration);
+      }
+
+      // 获取辩手库: GET /api/agents
+      async function fetchAgents() {
+        try {
+          fetch('/api/health').then(r => r.json()).then(h => { if (h.demo && !document.getElementById('demoBadge')) { const b = document.createElement('span'); b.id = 'demoBadge'; b.textContent = ' · 演示模式：预录数据 + 预设台词，不调用任何模型'; b.style.cssText = 'color:#ffd84a;font-weight:700;'; dom.mastheadStatus.after(b); } }).catch(() => {});
+          const res = await fetch('/api/agents');
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          state.agents = Array.isArray(data) ? data : (data.agents || []);
+          if (!state.selectedAgentIds.size) {
+            state.agents.filter(agent => agent.available && agent.role !== 'JUDGE').slice(0, 2).forEach(agent => state.selectedAgentIds.add(agent.id));
+          }
+          renderAgentRoster();
+          renderJudgeSelect();
+        } catch (err) {
+          dom.agentRoster.innerHTML = `
+            <div style="font-size:12px; color:var(--red); font-family:var(--font-mono); padding:8px 0;">
+              辩手席联络中断: ${err.message}
+            </div>
+          `;
+        }
+      }
+
+      // 裁判候选：可用且未被选为辩手的 Agent，默认 JUDGE 角色
+      function renderJudgeSelect() {
+        const current = dom.judgeSelect.value;
+        const options = state.agents.filter(a => a.available && !state.selectedAgentIds.has(a.id));
+        dom.judgeSelect.innerHTML = options.map(a => `<option value="${escapeHtml(a.id)}">${escapeHtml(a.name || a.id)}</option>`).join('') || '<option value="">（无可用裁判）</option>';
+        const preferred = options.find(a => a.id === current) || options.find(a => a.role === 'JUDGE') || options[0];
+        if (preferred) dom.judgeSelect.value = preferred.id;
+      }
+
+      // 渲染辩手选择单
+      function renderAgentRoster() {
+        if (!state.agents.length) {
+          dom.agentRoster.innerHTML = `<div style="font-size:12px; color:var(--ink-muted); font-family:var(--font-mono);">暂无辩手上线</div>`;
+          return;
+        }
+
+        dom.agentRoster.innerHTML = '';
+        state.agents.forEach(agent => {
+          const card = document.createElement('div');
+          const isSelected = state.selectedAgentIds.has(agent.id);
+          card.className = `agent-checkbox-card ${isSelected ? 'selected' : ''}`;
+
+          card.innerHTML = `
+            <input type="checkbox" ${isSelected ? 'checked' : ''} ${agent.available ? '' : 'disabled'} tabindex="-1">
+            <div class="agent-info-compact">
+              <div class="agent-name-row">
+                <span class="agent-name">${escapeHtml(agent.name || agent.id)}</span>
+                <span class="agent-stance-tag">${escapeHtml(agent.role || 'DEBATER')}</span>
+              </div>
+              <div class="agent-desc">${escapeHtml(agent.reason || (agent.available ? '已配置' : '未配置'))}</div>
+            </div>
+          `;
+
+          card.addEventListener('click', (e) => {
+            if(!agent.available) return;
+            e.preventDefault();
+            if (state.selectedAgentIds.has(agent.id)) {
+              state.selectedAgentIds.delete(agent.id);
+            } else {
+              state.selectedAgentIds.add(agent.id);
+            }
+            renderAgentRoster();
+            renderJudgeSelect();
+          });
+
+          dom.agentRoster.appendChild(card);
+        });
+      }
+
+      // 查阅历史辩题: GET /api/rounds
+      async function fetchRecentRounds() {
+        try {
+          const res = await fetch('/api/rounds');
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          const list = Array.isArray(data) ? data : (data.rounds || []);
+
+          if (!list.length) {
+            dom.recentRoundsList.innerHTML = `<span style="color:var(--ink-muted);">暂无归档记录</span>`;
+            return;
+          }
+
+          dom.recentRoundsList.innerHTML = '';
+          list.slice(0, 5).forEach(r => {
+            const item = document.createElement('div');
+            item.style.padding = '5px 0';
+            item.style.borderBottom = '1px dashed #dedcd4';
+            item.style.cursor = 'pointer';
+            item.innerHTML = `
+              <div style="font-weight:700; color:var(--black); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                ${escapeHtml(r.topic || '无题')}
+              </div>
+              <div style="display:flex; justify-content:space-between; color:var(--ink-muted); font-size:10px;">
+                <span>ID: ${escapeHtml(String(r.id).slice(0, 8))}</span>
+                <span>STATUS: ${escapeHtml((r.status || 'unknown').toUpperCase())}</span>
+              </div>
+            `;
+            item.addEventListener('click', () => {
+              loadRound(r.id);
+            });
+            dom.recentRoundsList.appendChild(item);
+          });
+        } catch (err) {
+          dom.recentRoundsList.innerHTML = `<span style="color:var(--ink-muted);">历史暂不可用</span>`;
+        }
+      }
+
+      // 发起新辩论: POST /api/rounds 然后 POST /api/rounds/:id/start
+      async function createAndStartRound() {
+        const topic = dom.topicInput.value.trim();
+        const maxRounds = parseInt(dom.maxRoundsInput.value, 10) || 4;
+        const agentIds = Array.from(state.selectedAgentIds);
+
+        if (!topic) {
+          showToast('必须提供辩论议题 (Topic)');
+          dom.topicInput.focus();
+          return;
+        }
+
+        if (agentIds.length < 2) {
+          showToast('至少需勾选 2 位辩手方可成辩');
+          return;
+        }
+        if (dom.modeSelect.value === 'card' && agentIds.length !== 2) {
+          showToast('站队卡固定 2 位辩手');
+          return;
+        }
+
+        dom.btnCreateAndStart.disabled = true;
+        dom.btnCreateAndStart.textContent = '正在编排交锋席...';
+
+        try {
+          // 1. 创建辩局
+          const createRes = await fetch('/api/rounds', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dom.modeSelect.value === 'card' ? {
+              mode: 'card', topic, agents: agentIds, maxCycles: 3,
+              facts: dom.factsInput.value.trim(),
+              ...((dom.stanceAInput.value.trim() || dom.stanceBInput.value.trim()) ? { stances: [dom.stanceAInput.value.trim(), dom.stanceBInput.value.trim()] } : {}),
+              ...(dom.judgeSelect.value ? { judge: dom.judgeSelect.value } : {})
+            } : {
+              topic: topic,
+              agents: agentIds,
+              maxCycles: maxRounds,
+              ...(dom.judgeSelect.value ? { judge: dom.judgeSelect.value } : {})
+            })
+          });
+
+          if (!createRes.ok) {
+            const detail = await createRes.json().catch(() => ({}));
+            throw new Error(`创建辩局失败: ${detail.error || createRes.status}`);
+          }
+          const created = await createRes.json();
+          const roundId = created.round.id;
+          location.hash = "round=" + encodeURIComponent(roundId);
+          state.currentRoundId = roundId;
+
+          // 2. 立即启动辩局
+          const startRes = await fetch(`/api/rounds/${roundId}/start`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}'
+          });
+
+          if (!startRes.ok) {
+            throw new Error(`启动辩局失败: ${startRes.status}`);
+          }
+
+          showToast(`辩局 #${roundId} 已鸣锣开辩`);
+          startPolling(roundId);
+          fetchRecentRounds();
+
+        } catch (err) {
+          showToast(err.message);
+        } finally {
+          dom.btnCreateAndStart.disabled = false;
+          dom.btnCreateAndStart.textContent = '开辩 // CREATE & START';
+        }
+      }
+
+      // 暂停辩局: POST /api/rounds/:id/stop
+      async function stopRound() {
+        if (!state.currentRoundId) return;
+        dom.btnPause.disabled = true;
+        try {
+          const res = await fetch(`/api/rounds/${state.currentRoundId}/stop`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+          if (!res.ok) throw new Error(`暂停失败 HTTP ${res.status}`);
+          showToast(`已下达暂停指令`);
+          await fetchRoundDetails(state.currentRoundId);
+        } catch (err) {
+          showToast(err.message);
+        } finally {
+          dom.btnPause.disabled = false;
+        }
+      }
+
+      // 继续辩局: POST /api/rounds/:id/resume
+      async function resumeRound() {
+        if (!state.currentRoundId) return;
+        dom.btnResume.disabled = true;
+        try {
+          const res = await fetch(`/api/rounds/${state.currentRoundId}/resume`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+          if (!res.ok) throw new Error(`恢复失败 HTTP ${res.status}`);
+          showToast(`已恢复交锋流程`);
+          startPolling(state.currentRoundId);
+        } catch (err) {
+          showToast(err.message);
+        } finally {
+          dom.btnResume.disabled = false;
+        }
+      }
+
+      // 投票: POST /api/rounds/:id/vote
+      async function castVote(agentId) {
+        if (!state.currentRoundId) {
+          showToast('辩局尚未初始化');
+          return;
+        }
+        try {
+          const res = await fetch(`/api/rounds/${state.currentRoundId}/vote`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ agentId: agentId })
+          });
+          if (!res.ok) throw new Error(`投票失败: ${res.status}`);
+          showToast(`人类偏好票已成功提交`);
+          await fetchRoundDetails(state.currentRoundId);
+        } catch (err) {
+          showToast(err.message);
+        }
+      }
+
+      // 轮询指定辩局: GET /api/rounds/:id
+      async function fetchRoundDetails(roundId) {
+        try {
+          const res = await fetch(`/api/rounds/${roundId}`);
+          if (!res.ok) throw new Error(`获取详情失败 ${res.status}`);
+          const data = await res.json();
+          state.roundData = data.round;
+          renderRoundUI(data.round);
+
+          const status = (data.round.status || '').toLowerCase();
+          if (status === 'consensus' || status === 'unresolved' || status === 'paused' || status === 'error' || status === 'card') {
+            stopPolling();
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      function startPolling(roundId) {
+        stopPolling();
+        state.currentRoundId = roundId;
+        state.isPolling = true;
+        fetchRoundDetails(roundId);
+        state.pollTimer = setInterval(() => {
+          fetchRoundDetails(roundId);
+        }, 2500);
+      }
+
+      function stopPolling() {
+        if (state.pollTimer) {
+          clearInterval(state.pollTimer);
+          state.pollTimer = null;
+        }
+        state.isPolling = false;
+      }
+
+      function loadRound(roundId) {
+        state.currentRoundId = roundId;
+        location.hash = "round=" + encodeURIComponent(roundId);
+        startPolling(roundId);
+      }
+
+      // 渲染辩论主台各区块
+      function renderRoundUI(data) {
+        if (!data) return;
+
+        const roundId = data.id || state.currentRoundId || 'UNKNOWN';
+        const topic = data.topic || '无指定论点';
+        const status = (data.status || 'idle').toLowerCase();
+        const currentRound = data.cycle || 0;
+        const maxRounds = data.maxCycles || dom.maxRoundsInput.value || 0;
+        const messages = data.messages || [];
+        const votes = data.votes || {};
+
+        // 顶栏与布告
+        dom.currentRoundIdLabel.textContent = `ROUND ID: [ ${roundId} ]`;
+        dom.roundCounterBadge.textContent = `STAGE: ${currentRound} / ${maxRounds} ROUNDS`;
+        dom.billboardTopic.textContent = topic;
+
+        // 状态徽标
+        dom.roundStatusBadge.className = `status-badge ${status}`;
+        dom.roundStatusBadge.textContent = status.toUpperCase();
+
+        // 顶部闪烁灯
+        if (status === 'running') {
+          dom.mastheadStatus.textContent = `ROUND IN PROGRESS // SESSION ${roundId}`;
+          dom.liveDot.style.background = 'var(--red)';
+        } else if (status === 'paused') {
+          dom.mastheadStatus.textContent = `ROUND PAUSED // SUSPENDED`;
+          dom.liveDot.style.background = '#fca311';
+        } else if (status === 'consensus' || status === 'card') {
+          dom.mastheadStatus.textContent = status === 'card' ? `SIDE CARD READY // ${roundId}` : `ROUND CONCLUDED // ARCHIVED`;
+          dom.liveDot.style.background = 'var(--black)';
+        } else if (status === 'error') {
+          dom.mastheadStatus.textContent = 'AGENT CALL FAILED // CHECK RECORD';
+          dom.liveDot.style.background = 'var(--red)';
+        } else {
+          dom.mastheadStatus.textContent = `SYSTEM IDLE`;
+          dom.liveDot.style.background = '#a2a099';
+        }
+
+        // 按钮可用状态同步
+        dom.btnPause.disabled = status !== 'running';
+        dom.btnResume.disabled = !['paused','unresolved','error'].includes(status) || (data.mode === 'card' && !!data.card);
+
+        // 辩手名单同步
+        const participantAgents = resolveRoundAgents(data);
+        if (participantAgents.length) {
+          dom.participantSummary.textContent = `辩手席: ` + participantAgents.map(a => data.stances?.[a.id] ? `${a.name}〔${data.stances[a.id]}〕` : a.name).join(' vs ') + (data.judge ? ` · 裁判: ${state.agents.find(a => a.id === data.judge)?.name || data.judge}` : '');
+        }
+
+        // 渲染投票席（站队卡模式的站队在分享页里，按匿名 Cookie 去重；这里的本机偏好票不适用）
+        document.querySelector('.voting-depot').style.display = data.mode === 'card' ? 'none' : '';
+        renderVotingDepot(participantAgents, votes);
+
+        // 渲染共识研判状态 (包含共识达成与未达成状态)
+        renderConsensusVerdict(data, status);
+
+        // 渲染消息流
+        renderMessagesStream(messages);
+      }
+
+      function resolveRoundAgents(data) {
+        // 数据里可能直接带有 agents 对象数组，也可能是 agent_ids 需匹配 state.agents
+        if (Array.isArray(data.agents) && data.agents.length > 0 && typeof data.agents[0] === 'object') {
+          return data.agents;
+        }
+        const ids = data.agents && Array.isArray(data.agents) ? data.agents : [];
+        if (Array.isArray(ids) && ids.length) {
+          return ids.map(id => {
+            const found = state.agents.find(a => a.id === id);
+            return found || { id: id, name: `辩手 [${id}]` };
+          });
+        }
+        return [];
+      }
+
+      // 渲染观众投票
+      function renderVotingDepot(agents, votes) {
+        if (!agents.length) {
+          dom.votingGrid.innerHTML = `
+            <div style="font-size:12px; color:var(--ink-muted); font-family:var(--font-mono);">
+              无激活辩手记录。
+            </div>
+          `;
+          return;
+        }
+
+        // 计算总票数与比率
+        let totalVotes = 0;
+        agents.forEach(a => {
+          totalVotes += Number(votes[a.id] || 0);
+        });
+
+        dom.votingGrid.innerHTML = '';
+        agents.forEach(a => {
+          const count = Number(votes[a.id] || 0);
+          const percent = totalVotes > 0 ? Math.round((count / totalVotes) * 100) : 0;
+
+          const card = document.createElement('div');
+          card.className = 'vote-candidate-card';
+          card.innerHTML = `
+            <div>
+              <div class="vote-meta">
+                <span class="vote-name">${escapeHtml(a.name || a.id)}</span>
+                <span class="vote-count">${count} 票 (${percent}%)</span>
+              </div>
+              <div class="vote-meter" style="margin-top:6px;">
+                <div class="vote-fill" style="width: ${percent}%;"></div>
+              </div>
+            </div>
+            <button class="btn-vote-trigger" data-agent-id="${escapeHtml(a.id)}">
+              + 认可观点 (VOTE)
+            </button>
+          `;
+
+          card.querySelector('.btn-vote-trigger').addEventListener('click', (e) => {
+            e.stopPropagation();
+            castVote(a.id);
+          });
+
+          dom.votingGrid.appendChild(card);
+        });
+      }
+
+      // 渲染共识状态与未达成共识状态
+      function renderConsensusVerdict(data, status) {
+        dom.verdictBanner.style.display = 'block';
+        dom.verdictBody.style.whiteSpace = '';
+        if (data.mode === 'card') return renderCardSummary(data, status);
+        dom.verdictBanner.className = 'verdict-banner' + (status==='consensus'?' consensus-achieved':status==='unresolved'?' consensus-failed':'');
+        if(status==='consensus'){
+          dom.verdictBadge.textContent='CONSENSUS / 全员同意';
+          dom.verdictTitle.textContent='达成共识';
+          dom.verdictBody.textContent=data.proposal?.text||'';
+          dom.verdictMeta.textContent='同一版本 '+(data.proposal?.version||'')+' · '+data.agents.length+' 位 Agent 明确同意'+(data.verdict?.verdict==='CONSENSUS'?' · 裁判认可：'+data.verdict.reason:'');
+        } else if(status==='unresolved'){
+          dom.verdictBadge.textContent='UNRESOLVED / 继续交锋';
+          dom.verdictTitle.textContent='尚未达成共识';
+          dom.verdictBody.textContent=data.proposal?.text||'尚无共同方案';
+          dom.verdictMeta.textContent=(data.outcome?.reason||'轮数已用尽，可以继续')+(data.outcome?.unresolved?.length?' 未解决：'+data.outcome.unresolved.map(u=>u.issue).join('；'):'')+'；票数不能决定结果';
+        } else {
+          dom.verdictBadge.textContent='CONSENSUS CHECK';
+          dom.verdictTitle.textContent=status==='running'?'仍在交锋':status==='error'?'调用失败':status==='paused'?'已暂停':'等待开辩';
+          dom.verdictBody.textContent=status==='error'?(data.error||'Agent 调用失败'):data.proposal?.text||'辩手将自主提出方案并逐一表态';
+          dom.verdictMeta.textContent=data.mode==='argue'?'前 '+(data.minCycles||0)+' 轮强制交锋；辩手同意后还需独立裁判认可':'全员对同一版本方案明确同意后才结束';
+        }
+      }
+
+      // 站队卡模式：显示卡片摘要、发布开关与分享页链接（模型文字一律走 textContent）
+      function renderCardSummary(data, status) {
+        const c = data.card;
+        dom.verdictBody.style.whiteSpace = 'pre-wrap';
+        dom.verdictBanner.className = 'verdict-banner' + (c ? ' consensus-failed' : '');
+        if (!c) {
+          dom.verdictBadge.textContent = 'SIDE CARD';
+          dom.verdictTitle.textContent = status === 'running' ? `三拍进行中（第 ${Math.min(3, (data.cycle || 0) + 1)}/3 拍）` : status === 'error' ? '调用失败' : status === 'paused' ? '已暂停' : '等待开辩';
+          dom.verdictBody.textContent = status === 'error' ? (data.error || '') : '立论 → 点名反驳 → 让步与底线，结束后一定出卡';
+          dom.verdictMeta.textContent = '';
+          return;
+        }
+        dom.verdictBadge.textContent = c.complete ? 'SIDE CARD / 三拍完整' : 'SIDE CARD / 内容不完整';
+        dom.verdictTitle.textContent = c.unresolved?.issue ? '没谈拢：' + c.unresolved.issue : (c.unresolvedConfirmed ? '双方已没有明确分歧' : '未决点未确认');
+        dom.verdictBody.textContent = c.sides.map(s => `${s.key}〔${s.label}〕${s.stance}`).join('\n') + '\n已认的账：' + (c.concessions.length ? c.concessions.map(x => `${x.by}：${x.point}`).join('；') : (c.concessionNote || '无'));
+        dom.verdictMeta.innerHTML = '';
+        const meta = document.createElement('span');
+        meta.textContent = (c.issues?.length ? '问题：' + c.issues.join('；') + ' · ' : '') + (c.rejected?.length ? `编辑提出但未通过核验的让步 ${c.rejected.length} 条 · ` : '') + (data.timing?.totalMs ? `用时 ${Math.round(data.timing.totalMs / 1000)} 秒 · ` : '');
+        const pub = document.createElement('button');
+        pub.className = 'btn-editorial';
+        pub.style.cssText = 'display:inline-block;width:auto;padding:4px 10px;margin:0 8px;';
+        pub.textContent = data.published ? '取消发布' : '发布分享页';
+        pub.addEventListener('click', async () => {
+          const res = await fetch(`/api/rounds/${data.id}/publish`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ published: !data.published }) });
+          if (res.ok) fetchRoundDetails(data.id); else showToast('发布失败');
+        });
+        dom.verdictMeta.append(meta, pub);
+        if (data.published) {
+          const a = document.createElement('a'); a.href = `/card/${data.id}`; a.target = '_blank'; a.textContent = '打开分享页 ↗'; dom.verdictMeta.append(a);
+          // 导出：微信长图（1080px PNG）与自包含静态页；只对已发布（=人工审过）的卡开放。
+          for (const [href, label] of [[`/api/rounds/${data.id}/export/long.png`, '导出微信长图'], [`/api/rounds/${data.id}/export/card.html`, '导出静态页'], [`/api/rounds/${data.id}/export/card.json`, '导出卡片数据']]) {
+            const e = document.createElement('a'); e.href = href; e.setAttribute('download', ''); e.className = 'export-link'; e.textContent = label; e.style.cssText = 'margin-left:10px;'; dom.verdictMeta.append(e);
+          }
+        } else {
+          const hint = document.createElement('span'); hint.textContent = '审核后点「发布分享页」即可导出长图/静态页'; hint.style.cssText = 'margin-left:8px;opacity:.7;'; dom.verdictMeta.append(hint);
+        }
+      }
+
+      // 渲染辩论消息速记流
+      function renderMessagesStream(messages) {
+        dom.feedCounter.textContent = `${messages.length} STATEMENTS RECORDED`;
+
+        if (!messages.length) {
+          dom.messagesContainer.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-symbol">[ § ]</div>
+              <div class="empty-label">暂无实录发言</div>
+              <div class="empty-sub">辩论启动后，辩手的立论陈词与质询交锋将在此流水公示。</div>
+            </div>
+          `;
+          return;
+        }
+
+        dom.messagesContainer.innerHTML = '';
+        messages.forEach((msg, idx) => {
+          const item = document.createElement('article');
+          item.className = 'utterance-item';
+
+          const kindLabel = {argument:'发言', proposal:'提案', assent:'表态', judge:'裁判', rule:'规则'}[msg.kind] || msg.kind || '发言';
+          const roundIndex = (msg.cycle ? msg.cycle + ' · ' : '') + kindLabel;
+          const meta = msg.meta || {};
+          const extra = [meta.ref && '编号：' + meta.ref, meta.claim && '核心主张：' + meta.claim, meta.rebuttal && '反驳：' + meta.rebuttal, meta.concessions?.length && '让步：' + meta.concessions.join('；'), meta.bottomLine && '底线：' + meta.bottomLine, meta.missing?.length && '缺少字段：' + meta.missing.join('、'), meta.vote && msg.kind === 'argument' && '表态：' + meta.vote + (meta.earlyAgreeRejected ? '（交锋期，不计入）' : '')].filter(Boolean).join('\n');
+          const speakerName = msg.speaker === 'system' ? '平台规则' : (state.agents.find(a=>a.id===msg.speaker)?.name || msg.speaker || 'UNKNOWN AGENT');
+          const timeStr = msg.createdAt ? new Date(msg.createdAt).toLocaleTimeString() : `SEQ #${String(idx + 1).padStart(3, '0')}`;
+
+          item.innerHTML = `
+            <div class="utterance-meta-bar">
+              <div class="speaker-stamp">
+                <span class="round-tag">ROUND ${roundIndex}</span>
+                <span class="speaker-name">${escapeHtml(speakerName)}</span>
+              </div>
+              <div style="color:var(--ink-muted);">${escapeHtml(timeStr)}</div>
+            </div>
+            <div class="utterance-body" style="white-space:pre-wrap;">${escapeHtml(msg.status==='running'?'正在思考…':(msg.content || '') + (extra ? '\n\n' + extra : ''))}</div>
+            <div class="utterance-footer">
+              <span>ARGUMENT INDEX: ${idx + 1}</span>
+              <span>${escapeHtml(msg.status || "")}</span>
+            </div>
+          `;
+
+          dom.messagesContainer.appendChild(item);
+        });
+      }
+
+      // 转义防注入
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      // 事件绑定
+      dom.btnCreateAndStart.addEventListener('click', createAndStartRound);
+      dom.btnPause.addEventListener('click', stopRound);
+      dom.btnResume.addEventListener('click', resumeRound);
+
+      // 初始化引导
+      syncModeUI();
+      fetchAgents();
+      fetchRecentRounds();
+      const saved = location.hash.match(/round=([^&]+)/);
+      if(saved) loadRound(decodeURIComponent(saved[1]));
+
+    })();
+  </script>
+</body>
+</html>

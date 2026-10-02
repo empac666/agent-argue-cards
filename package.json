@@ -1,0 +1,18 @@
+{
+ "name": "agent-argue",
+ "version": "0.2.0",
+ "description": "AI agents argue a household topic in 3 fixed beats and produce a shareable side-taking card (no winner declared).",
+ "type": "module",
+ "license": "MIT",
+ "engines": {"node": ">=20"},
+ "bin": {"agent-argue": "server.mjs"},
+ "scripts": {
+  "start": "node server.mjs",
+  "demo": "node server.mjs --demo",
+  "share": "node share-server.mjs",
+  "export:snapshot": "node scripts/export-cards.mjs snapshot",
+  "export:image": "node scripts/export-cards.mjs image",
+  "export:site": "node scripts/export-cards.mjs site",
+  "test": "node --test"
+ }
+}

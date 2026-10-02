@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>群聊站队卡 · Agent Argue</title>
+<style>
+ :root{--ink:#16130f;--muted:#6f675d;--paper:#f6f1e7;--card:#fffdf8;--a:#c8402f;--b:#1f5fa8;--hi:#ffd84a;--line:#e3dccd}
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;-webkit-text-size-adjust:100%}
+ main{max-width:440px;margin:0 auto;padding:14px 12px 40px}
+ .poster{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:16px 16px 14px;box-shadow:4px 4px 0 var(--ink)}
+ .kicker{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);letter-spacing:.05em}
+ .badge{border:1px solid currentColor;border-radius:999px;padding:1px 8px;font-size:11px}
+ .badge.warn{color:#9a5b00;background:#fff4d6}
+ h1{font-size:22px;line-height:1.3;margin:8px 0 4px;font-weight:800}
+ .facts{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+ .vs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+ .side{border-radius:10px;padding:10px;color:#fff;min-height:96px}
+ .side.A{background:var(--a)}.side.B{background:var(--b)}
+ .side .label{font-weight:800;font-size:16px}
+ .side .stance{font-size:13px;margin-top:4px;opacity:.95}
+ .side .bl{font-size:12px;margin-top:6px;border-top:1px solid rgba(255,255,255,.4);padding-top:5px}
+ h2{font-size:13px;letter-spacing:.08em;margin:14px 0 6px;color:var(--muted);font-weight:700}
+ .conc{border-left:4px solid var(--line);padding:4px 0 4px 10px;margin:6px 0}
+ .conc.A{border-color:var(--a)}.conc.B{border-color:var(--b)}
+ .conc .pt{font-weight:650}
+ .q{font-size:12px;color:var(--muted);margin-top:2px}
+ .none{font-size:13px;color:var(--muted);font-style:italic}
+ .crux{background:var(--hi);border:2px solid var(--ink);border-radius:10px;padding:10px 12px;margin-top:6px}
+ .crux .issue{font-size:17px;font-weight:800;line-height:1.35}
+ .crux .q{color:#3b3428}
+ .foot{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:12px}
+ .vote{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+ .vote p{margin:0 0 8px;font-weight:700}
+ .btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+ button{font:inherit;border:2px solid var(--ink);border-radius:10px;padding:10px 4px;background:#fff;font-weight:700;cursor:pointer;min-height:44px}
+ button.A{color:var(--a)}button.B{color:var(--b)}
+ button.on{background:var(--ink);color:#fff}
+ .tally{font-size:13px;color:var(--muted);margin-top:8px}
+ .tools{display:flex;gap:8px;margin-top:12px}
+ .tools button{flex:1;font-size:14px}
+ details{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+ summary{font-weight:700;cursor:pointer}
+ .sp{margin:10px 0;padding-top:8px;border-top:1px dashed var(--line);font-size:13.5px}
+ .sp b{font-size:12px}
+ .err{padding:40px 10px;text-align:center;color:var(--muted)}
+ .hint{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+<main id="app"><div class="err">加载中…</div></main>
+<script>
+(function(){
+ const id=(location.pathname.match(/\/card\/([a-f0-9-]+)/)||[])[1];
+ const app=document.getElementById('app');
+ const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined&&text!==null)e.textContent=String(text);return e;};
+ let data=null;
+ async function load(){
+  try{const r=await fetch('/api/cards/'+id,{credentials:'same-origin'});const j=await r.json();if(!r.ok)throw new Error(j.error||r.status);data=j;render();}
+  catch(e){app.replaceChildren(el('div','err','卡片打不开：'+e.message));}
+ }
+ async function vote(side){
+  try{const r=await fetch('/api/cards/'+id+'/side',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({side})});const j=await r.json();if(!r.ok)throw new Error(j.error||r.status);data=j;render();}
+  catch(e){alert('站队失败：'+e.message);}
+ }
+ function render(){
+  const c=data.card,[A,B]=c.sides,name=k=>k==='A'?A.label:B.label;
+  const poster=el('section','poster');
+  const k=el('div','kicker');k.append(el('span',null,'群聊站队卡 · 不判输赢'));
+  k.append(el('span','badge'+(c.complete?'':' warn'),c.complete?'三拍完整':'内容不完整'));
+  poster.append(k,el('h1',null,data.topic));
+  if(c.facts)poster.append(el('p','facts','背景：'+c.facts));
+  const vs=el('div','vs');
+  for(const s of c.sides){const d=el('div','side '+s.key);d.append(el('div','label',s.label),el('div','stance',s.stance));if(s.bottomLine)d.append(el('div','bl','底线：'+s.bottomLine));vs.append(d);}
+  poster.append(vs);
+  poster.append(el('h2',null,'两边已认的账'));
+  if(c.concessions.length){for(const x of c.concessions){const d=el('div','conc '+x.by);d.append(el('div','pt',name(x.by)+'：'+x.point),el('div','q','「'+x.acceptQuote+'」（'+x.acceptRef+'，回应 '+x.opponentRef+'）'));poster.append(d);}}
+  else poster.append(el('div','none',c.concessionNote||'未发现可核验的明确让步'));
+  poster.append(el('h2',null,'还没谈拢的一句'));
+  const crux=el('div','crux');
+  if(c.unresolved&&c.unresolved.issue){crux.append(el('div','issue',c.unresolved.issue));for(const q of c.unresolved.quotes)crux.append(el('div','q',name(q.ref[0])+'：「'+q.quote+'」'));}
+  else if(c.unresolvedConfirmed&&!c.unresolved){crux.append(el('div','issue','双方已没有明确分歧'));}
+  else{crux.append(el('div','issue','未决点未确认'));for(const s of c.sides)if(s.finalClaim)crux.append(el('div','q',s.label+' 最后主张：'+s.finalClaim));}
+  poster.append(crux);
+  if(!c.complete&&c.issues?.length)poster.append(el('div','q','说明：'+c.issues.join('；')));
+  const f=el('div','foot');f.append(el('span',null,'辩手：'+A.agent+' vs '+B.agent),el('span',null,'Agent Argue'));poster.append(f);
+  const v=el('section','vote');v.append(el('p',null,data.mySide?'你已站队，可以改：':'你站哪边？'));
+  const btns=el('div','btns');
+  for(const [side,label] of [['A','站'+A.label],['B','站'+B.label],['unsure','信息不足']]){const b=el('button',side+(data.mySide===side?' on':''),label);b.addEventListener('click',()=>vote(side));btns.append(b);}
+  v.append(btns);
+  if(data.tally){const t=data.tally;v.append(el('div','tally',`匿名站队记录：${A.label} ${t.A||0} · ${B.label} ${t.B||0} · 信息不足 ${t.unsure||0}（不代表独立人数，不是民调）`));}
+  else v.append(el('div','tally','站队后可见大家怎么站。'));
+  const tools=el('div','tools');const copy=el('button',null,'复制链接发群里');copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);copy.textContent='已复制';}catch{prompt('复制这个链接：',location.href);}});tools.append(copy);v.append(tools,el('div','hint','想发图：直接手机截屏上面这张卡。'));
+  const det=el('details');det.append(el('summary',null,'看完整三拍回放（'+data.speeches.length+' 段）'));
+  for(const s of data.speeches){const d=el('div','sp');d.append(el('b',null,s.ref+' · '+name(s.side)+' · 第 '+s.beat+' 拍'),el('div',null,s.content));if(s.bottomLine)d.append(el('div','q','底线：'+s.bottomLine));det.append(d);}
+  app.replaceChildren(poster,v,det);
+ }
+ if(!id)app.replaceChildren(el('div','err','链接不完整'));else load();
+})();
+</script>
+</body>
+</html>
