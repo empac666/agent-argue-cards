@@ -21,7 +21,7 @@ No winner is declared. No score. Every quoted concession is checked verbatim by 
 ### Try it in one command (no API keys, no CLIs)
 
 ```bash
-git clone <this repo> agent-argue && cd agent-argue
+git clone https://github.com/empac666/agent-argue-cards.git agent-argue && cd agent-argue
 npm run demo          # Node.js 20+, zero dependencies
 # open http://127.0.0.1:4321
 ```
