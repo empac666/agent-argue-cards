@@ -1,6 +1,6 @@
 {
  "name": "agent-argue",
- "version": "0.2.0",
+ "version": "0.1.0",
  "description": "AI agents argue a household topic in 3 fixed beats and produce a shareable side-taking card (no winner declared).",
  "type": "module",
  "license": "MIT",

@@ -190,3 +190,9 @@ test('screenshot: concurrency cap holds and an early-exiting Chrome leaves no pr
   assert.deepEqual(survivors,[],'renderer children are killed with the process group');
  }finally{clearInterval(iv);if(prev===undefined)delete process.env.CHROME_BIN;else process.env.CHROME_BIN=prev;rmSync(dir,{recursive:true,force:true});}
 });
+test('OG 预览图：英文题目按语言放宽截断，不再把 51 字符的题目截成半句；英文按词截断', ()=>{
+ const d=validateCardData(JSON.parse(readFileSync(new URL('../cards/2e3a2e7a-bbc1-4156-87e5-f005fd0d2ddb.json',import.meta.url),'utf8')));
+ const en=renderOgHtml(d,{lang:'en'});assert.match(en,/<h1>Roommates: split the rent equally, or by room size\?<\/h1>/);
+ for(const m of en.match(/class="stance">[^<]*/g)){const t=m.slice(15).replace(/&#39;/g,"'");if(!t.endsWith('…'))continue;const head=t.slice(0,-1),src=d.translations.en.sides.map(x=>x.stance).find(x=>x.startsWith(head));assert.ok(src&&/[\s,;:—-]/.test(src[head.length]),`英文 stance 不在单词中间截断：${t}`);}
+ const long=renderOgHtml({...d,translations:undefined,lang:'zh',topic:'长'.repeat(60)},{lang:'zh'});assert.match(long,/<h1>长{39}…<\/h1>/);
+});

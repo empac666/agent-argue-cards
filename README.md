@@ -1,10 +1,33 @@
-# Agent Argue
+<h1 align="center">Agent Argue</h1>
 
-**Two AIs argue a household question in 3 fixed beats. You get a card of what each side conceded and the one thing still unresolved — then your group chat picks sides.**
-**两个 AI 就一个家常问题吵三拍，出一张卡：双方各自认了什么账、还剩哪一句没谈拢——然后让群里的人站队。**
+<p align="center">
+  <b>Two AIs argue an everyday question in 3 fixed beats → a side-taking card for your group chat. No winner declared.</b><br>
+  <b>两个 AI 就一个家常问题吵三拍 → 出一张让群友站队的卡，不判输赢。</b>
+</p>
 
-No winner is declared. No score. Every quoted concession is checked verbatim by code against the transcript.
-不判输赢、不打分；卡上每一条「让步」的引文都由代码逐字核对原始发言。
+<p align="center">
+  <a href="https://empac666.github.io/agent-argue-cards/"><img alt="Live cards on GitHub Pages" src="https://img.shields.io/badge/live%20cards-GitHub%20Pages-16130f?logo=github"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-1f5fa8"></a>
+  <img alt="Node.js 20+" src="https://img.shields.io/badge/node-%E2%89%A520-339933?logo=node.js&logoColor=white">
+  <img alt="Zero npm dependencies" src="https://img.shields.io/badge/npm%20dependencies-0-c8402f">
+  <a href="https://github.com/empac666/agent-argue-cards/discussions"><img alt="Discussions" src="https://img.shields.io/github/discussions/empac666/agent-argue-cards?color=ffd84a&labelColor=555"></a>
+</p>
+
+<p align="center">
+  <a href="https://empac666.github.io/agent-argue-cards/"><b>See the live cards</b></a> ·
+  <a href="https://github.com/empac666/agent-argue-cards/discussions">Suggest a topic / 出题</a> ·
+  <a href="#english">English</a> · <a href="#中文">中文</a>
+</p>
+
+<p align="center"><img src="docs/images/hero.gif" width="400" alt="A side-taking card scrolling: both stances, what each side conceded, the one thing still unresolved, and the 'Reply A / B / Not sure' prompt"></p>
+
+```bash
+git clone https://github.com/empac666/agent-argue-cards.git && cd agent-argue-cards
+npm run demo   # Node.js 20+, zero dependencies, no API keys → http://127.0.0.1:4321
+```
+
+The card shows each side's stance and bottom line, **what each side conceded** (every concession quotes both speakers verbatim, checked by code against the transcript), and **the one thing still unresolved**. Readers reply **A / B / Not sure + one reason**.
+卡上有双方立场与底线、**两边各自认了什么账**（每条让步都逐字引用双方原话，由代码对照原始发言核验）、以及**还没谈拢的那一句**。读者回复 **A / B / 信息不足 + 一句理由**。
 
 <p align="center">
   <img src="docs/images/card-og-en.png" width="640" alt="Side-taking card preview (English)"><br>
@@ -21,7 +44,7 @@ No winner is declared. No score. Every quoted concession is checked verbatim by 
 ### Try it in one command (no API keys, no CLIs)
 
 ```bash
-git clone https://github.com/empac666/agent-argue-cards.git agent-argue && cd agent-argue
+git clone https://github.com/empac666/agent-argue-cards.git && cd agent-argue-cards
 npm run demo          # Node.js 20+, zero dependencies
 # open http://127.0.0.1:4321
 ```
@@ -68,7 +91,7 @@ npm run share -- --cards cards --og _site/og       # optional read-only server w
 
 - Static pages embed their data and make no backend calls — host them anywhere (e.g. GitHub Pages; see the manual-only workflow in `.github/workflows/pages.yml`).
 - Add human translations under `translations.en` in a card JSON to get an extra `<id>.en.html`; verbatim quotes always stay in the original language.
-- giscus comments are supported but **off by default** (`site.config.json`).
+- giscus comments (GitHub Discussions) are **on for the live site** via `site.config.json`, one thread per card shared by its zh/en pages. If you fork, point `giscus` at your own repo or set `enabled:false`.
 
 ### Security model
 
@@ -77,7 +100,7 @@ npm run share -- --cards cards --og _site/og       # optional read-only server w
 
 ### Status & limits
 
-Prototype. Side-picks are anonymous cookie-deduped records, not unique people. Cards summarise model arguments; they are not advice or verdicts. `npm test` runs the full suite (no network, no models).
+Prototype (v0.1.0). Code verifies quote **provenance** only — that each quoted phrase exists, from the right speaker, in the right order; whether the model's one-line summary of a concession is a fair reading is *not* machine-checked. Side-picks are anonymous cookie-deduped records, not unique people. Cards summarise model arguments; they are not advice or verdicts. `npm test` runs the full suite (no network, no models).
 
 ---
 
@@ -86,7 +109,7 @@ Prototype. Side-picks are anonymous cookie-deduped records, not unique people. C
 ### 一条命令试玩（不需要任何 Key 或 CLI）
 
 ```bash
-git clone <本仓库> agent-argue && cd agent-argue
+git clone https://github.com/empac666/agent-argue-cards.git && cd agent-argue-cards
 npm run demo          # Node.js 20+，零依赖
 # 打开 http://127.0.0.1:4321
 ```
@@ -109,6 +132,7 @@ npm run demo          # Node.js 20+，零依赖
 - 微信：控制台点「发布分享页」后点**导出微信长图**（1080px 宽，底部大字「回 A / B / 信息不足 + 一句理由」），直接发图到群里收回复。
 - 海外：`npm run export:site` 生成数据内嵌、零后端调用的静态页（含 OG 预览图），可放 GitHub Pages；`.github/workflows/pages.yml` 是只能手动触发的部署草稿。
 - 需要可计数的网页站队：运行独立只读服务 `npm run share`，只把**这个端口**挂到你的反代/隧道后面。
+- 评论：线上站点通过 `site.config.json` 开启了 giscus（GitHub Discussions，同一张卡的中英文页共用一个讨论串）；fork 后请改成你自己的仓库或关掉。
 
 ### 安全
 
@@ -116,7 +140,7 @@ npm run demo          # Node.js 20+，零依赖
 
 ### 现状与限制
 
-原型阶段。站队是按匿名 Cookie 去重的参与记录，不代表独立人数；卡片是对模型发言的整理，不是建议或裁决。更多机制细节见 [docs/DESIGN.zh.md](docs/DESIGN.zh.md)。
+原型阶段（v0.1.0）。代码只核验引文**出处**（原话存在、说话人和先后顺序正确），不核验模型对让步的一句话概括是否公允。站队是按匿名 Cookie 去重的参与记录，不代表独立人数；卡片是对模型发言的整理，不是建议或裁决。更多机制细节见 [docs/DESIGN.zh.md](docs/DESIGN.zh.md)。
 
 ## License
 
