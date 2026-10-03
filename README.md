@@ -58,7 +58,7 @@ Demo mode ships two **pre-recorded real debates** (Gemini vs GPT-OSS 120B, edite
 1. **Beat 1 – blind opening**: each side argues its assigned stance without seeing the other.
 2. **Beat 2 – named rebuttal**: each side must rebut the opponent's one-line core claim (chosen by code, not by the model).
 3. **Beat 3 – concessions & bottom line**: say what the other side convinced you of (or nothing), plus one bottom line.
-4. **Editor** (a third, independent model) drafts the card. Each concession must cite two verbatim quotes — the opponent's point and the acceptance — which code verifies by speech ID, speaker, field and order. Fabricated, re-punctuated, self-quoted or misattributed quotes are dropped. If anything fails, a card is still produced and honestly marked *incomplete*.
+4. **Editor** (a third, independent model) drafts the card. Each concession must cite two verbatim quotes — the opponent's point and the acceptance — which code verifies by speech ID, speaker, field and order. Fabricated, re-punctuated, self-quoted or misattributed quotes are dropped, and so are "echo" concessions (one side repeating the opponent's concession as if it were conceding). A concession that fails the check is left off the card; if none survive, the card says no verifiable concession was found. A card is always produced, and is marked *incomplete* only if a debate beat or the editor fails.
 
 ### Run real debates
 
@@ -121,7 +121,7 @@ npm run demo          # Node.js 20+，零依赖
 1. **第 1 拍 盲立论**：双方看不到对方，只为分到的立场立论。
 2. **第 2 拍 点名反驳**：必须反驳对方那一句核心主张（由代码指定，不让模型挑软柿子）。
 3. **第 3 拍 让步与底线**：写明被对方哪一点说服（可以没有），再给一句底线。
-4. **独立编辑**整理成卡。每条让步必须给两段逐字原文（对方论点 + 本方承认），代码按发言编号、说话人、字段和先后顺序核验；编造、改标点、自己引自己、归错人一律剔除；只是复述对方让步（对方承认的其实是自己的论点）的也剔除。任何环节失败也照样出卡，并如实标「内容不完整」。
+4. **独立编辑**整理成卡。每条让步必须给两段逐字原文（对方论点 + 本方承认），代码按发言编号、说话人、字段和先后顺序核验；编造、改标点、自己引自己、归错人一律剔除；只是复述对方让步（对方承认的其实是自己的论点）的也剔除。没通过核验的让步直接不上卡，一条都没通过时卡上写「未发现可核验的明确让步」。卡片一定会产出；只有某一拍辩论或编辑失败时，才如实标「内容不完整」。
 
 ### 真实辩论
 
