@@ -1,0 +1,157 @@
+{
+ "schema": 1,
+ "id": "47dfa0ac-7f14-4c4e-809d-1d2b632f5822",
+ "short": "47dfa0ac",
+ "topic": "情侣同居，房租和日常开销该 AA 还是按收入比例分？",
+ "facts": "一对情侣在深圳同居一年多，还没结婚。一方税后月入 2.5 万，另一方 1.2 万。一居室月租 6000 元，水电、买菜、日用等共同开销每月约 4000 元，双方各自存钱、没有共同账户。",
+ "lang": "zh",
+ "createdAt": "2026-10-03T05:13:07.042Z",
+ "card": {
+  "complete": true,
+  "sides": [
+   {
+    "key": "A",
+    "label": "平摊派",
+    "stance": "未婚同居双方享受对等资源，应各出一半，账清才能平等相处",
+    "bottomLine": "没领证前绝不接受变相的经济依附与倒贴，各付一半、谁消费谁买单是我绝不退让的底线。",
+    "finalClaim": "未婚同居就该一人一半平摊开销，账算得清、责任对等，感情才能真正平等长久。",
+    "agent": "agy"
+   },
+   {
+    "key": "B",
+    "label": "比例派",
+    "stance": "按收入比例分摊，让双方负担与承受能力匹配，关系才能和谐持久",
+    "bottomLine": "我绝不接受完全平摊的方案，必须按收入比例分配开销",
+    "finalClaim": "房租和日常开销应按收入比例分摊，确保双方在各自收入能力范围内保持储蓄。",
+    "agent": "agy-gptoss"
+   }
+  ],
+  "concessions": [
+   {
+    "by": "B",
+    "point": "B承认：AA平摊后低收入方仍有约7000元可支配，生活并不拮据",
+    "opponentRef": "A2",
+    "opponentQuote": "月入一万二那位房租水电吃喝全包了还净剩七千块，在深圳怎么就生活拮据存不下钱了？",
+    "acceptRef": "B3",
+    "acceptQuote": "我承认，按 AA 平摊，收入较低的一方支付 5000 元后仍有约 7000 元可支配，生活并不拮据。"
+   }
+  ],
+  "concessionNote": "",
+  "unresolved": {
+   "issue": "同居开销的分摊基准，是「享受一致则出资对等」，还是「收入有差则负担相称」",
+   "quotes": [
+    {
+     "ref": "A3",
+     "quote": "没领证前绝不接受变相的经济依附与倒贴，各付一半、谁消费谁买单是我绝不退让的底线。"
+    },
+    {
+     "ref": "B3",
+     "quote": "我绝不接受完全平摊的方案，必须按收入比例分配开销"
+    }
+   ]
+  },
+  "unresolvedConfirmed": true,
+  "issues": []
+ },
+ "speeches": [
+  {
+   "ref": "A1",
+   "side": "A",
+   "beat": 1,
+   "claim": "没结婚同居就是两个独立成年人生活，一万块开销一人五千平摊，账算得清感情才走得长。",
+   "rebuttal": "",
+   "content": "两个人住同一间一居室、用一样的水电、吃一样的菜，享受对等的居住品质，凭什么收入高的就得替对方的日常底线买单？月薪1.2万出5000后还剩7000，在深圳完全够体面生活加存钱，根本谈不上被压榨；非要按收入比例分就是没领证先搞财产共有，多掏钱的觉得在扶贫，少掏钱的在家里直不起腰，只有各出一半谁也不欠谁，两个人才能真正平等。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B1",
+   "side": "B",
+   "beat": 1,
+   "claim": "房租和日常开销应按收入比例分摊",
+   "rebuttal": "",
+   "content": "他月收入 2.5 万，她月收入 1.2 万，若均等分摊每人 5000 元，低收入者只能剩约 2000 元，存不下钱甚至生活拮据；按 2.5:1.2 的比例分配，租金 6000 元中他承担约 3800 元，她承担约 2200 元，4000 元的日常开销再按比例分配，他付约 2600 元，她付约 1400 元，两人都能保留原有的储蓄计划，经济压力更均衡，也更能维系关系的和谐。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A2",
+   "side": "A",
+   "beat": 2,
+   "claim": "按比例分摊本质是在没领证前强收“情侣收入税”，把平等的同居消费扭曲成了单方面的经济依附。",
+   "rebuttal": "对方主张按收入比例分摊，根本错在把对等的共同消费混淆成了法定的夫妻共有财产——享受同样的居住和日常资源，凭什么要多劳多得的一方承担更多成本；而且1.2万扣除5000分摊明明还剩整整7000元，对方硬说成只剩2000、存不下钱，纯属偷换概念夸大焦虑。",
+   "content": "账先算明白：一万块总开销平摊各出五千，月入一万二那位房租水电吃喝全包了还净剩七千块，在深圳怎么就生活拮据存不下钱了？没领证又各自存钱，高收入是人家自己的劳动所得，凭什么非得为对方的开销兜底？要是真按出资比例分摊，那租房选址、日常花销的决定权是不是也按 2.5:1.2 来算？这种看似温情的比例制，只会让多出钱的心里憋屈，少出钱的在家里抬不起头。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B2",
+   "side": "B",
+   "beat": 2,
+   "claim": "房租和日常开销应按收入比例分摊，确保双方都能保持原有储蓄。",
+   "rebuttal": "A2 所称的‘情侣收入税’并不成立，因为比例分摊并非强制共享财产，而是依据各自收入能力分配实际消费，避免低收入方因固定平摊而生活拮据。",
+   "content": "按比例分摊并不是把同居消费变成‘税’，而是合理匹配支出与收入。如果仍然均等分摊，收入低的一方只能剩下极少的余钱，长期会导致经济压力和感情摩擦。比例分配让每个人的负担与承受能力相符，既公平又能维系关系的和谐。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A3",
+   "side": "A",
+   "beat": 3,
+   "claim": "未婚同居就该一人一半平摊开销，账算得清、责任对等，感情才能真正平等长久。",
+   "rebuttal": "",
+   "content": "两个人享受着完全一样的一居室和柴米油盐，掏完五千明明还净剩整整七千块，在深圳既谈不上吃紧更算不上委屈。没领证就搞按收入打折分摊，本质上就是在用恋爱关系道德绑架多赚钱的一方去扶贫，少掏钱的没话语权、多掏钱的心里憋屈。只有权责对等的一人一半，两个人才能不带算计、平起平坐地把日子过下去。",
+   "bottomLine": "没领证前绝不接受变相的经济依附与倒贴，各付一半、谁消费谁买单是我绝不退让的底线。",
+   "conceded": []
+  },
+  {
+   "ref": "B3",
+   "side": "B",
+   "beat": 3,
+   "claim": "房租和日常开销应按收入比例分摊，确保双方在各自收入能力范围内保持储蓄。",
+   "rebuttal": "",
+   "content": "我承认，按 AA 平摊，收入较低的一方支付 5000 元后仍有约 7000 元可支配，生活并不拮据。但按收入比例分配，双方的经济负担与收入匹配，避免高收入者长期承担显著额外压力，保护双方的财务独立与关系和谐。",
+   "bottomLine": "我绝不接受完全平摊的方案，必须按收入比例分配开销",
+   "conceded": [
+    "我承认，按 AA 平摊，收入低的一方在支付 5000 元后仍可剩下约 7000 元，生活并不拮据"
+   ]
+  }
+ ],
+ "provenance": {
+  "debaters": [
+   "agy",
+   "agy-gptoss"
+  ],
+  "editor": "agy-claude"
+ },
+ "version": "6fd2c47d253f",
+ "translations": {
+  "en": {
+   "version": "7854728846a8",
+   "sourceVersion": "6fd2c47d253f",
+   "note": "Human translation of display text only; verbatim quotes stay in the original language.",
+   "topic": "Living together unmarried: split costs 50/50, or by income?",
+   "facts": "An unmarried couple has lived together in Shenzhen for over a year. One takes home 25,000 CNY a month, the other 12,000. The one-bed flat costs 6,000 a month; utilities, groceries and household items come to about 4,000. Each saves separately; there is no joint account.",
+   "sides": [
+    {
+     "label": "Fifty-fifty",
+     "stance": "Unmarried partners share the same flat and the same things, so each pays half — clear accounts keep them equals.",
+     "bottomLine": "Before we're married, no hidden financial dependence or one side propping up the other — each pays half and you pay for what you use. I won't budge on that."
+    },
+    {
+     "label": "By-income",
+     "stance": "Split costs in proportion to income, so each carries what they can afford and the relationship stays balanced.",
+     "bottomLine": "I will never accept a straight 50/50 split; costs must be shared in proportion to income."
+    }
+   ],
+   "concessions": [
+    {
+     "point": "admits that under a 50/50 split the lower earner still has about 7,000 CNY left after paying 5,000, so they are not actually strapped."
+    }
+   ],
+   "unresolved": {
+    "issue": "Shared costs: \"same benefit, same share\", or \"bigger income, bigger share\"?"
+   }
+  }
+ }
+}
