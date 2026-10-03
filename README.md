@@ -58,7 +58,9 @@ Demo mode ships two **pre-recorded real debates** (Gemini vs GPT-OSS 120B, edite
 1. **Beat 1 – blind opening**: each side argues its assigned stance without seeing the other.
 2. **Beat 2 – named rebuttal**: each side must rebut the opponent's one-line core claim (chosen by code, not by the model).
 3. **Beat 3 – concessions & bottom line**: say what the other side convinced you of (or nothing), plus one bottom line.
-4. **Editor** (a third, independent model) drafts the card. Each concession must cite two verbatim quotes — the opponent's point and the acceptance — which code verifies by speech ID, speaker, field and order. Fabricated, re-punctuated, self-quoted or misattributed quotes are dropped, and so are "echo" concessions (one side repeating the opponent's concession as if it were conceding). A concession that fails the check is left off the card; if none survive, the card says no verifiable concession was found. A card is always produced, and is marked *incomplete* only if a debate beat or the editor fails.
+4. **Editor** (a third, independent model) drafts the card. Each concession must cite two verbatim quotes — the opponent's point and the acceptance — which code verifies by speech ID, speaker, field and order. Fabricated, re-punctuated, self-quoted or misattributed quotes are dropped, and so are "echo" concessions (one side repeating the opponent's concession as if it were conceding). Concessions that merely accept the conceding side’s own earlier point are also dropped. A concession that fails the check is left off the card; if none survive, the card says no verifiable concession was found. A card is always produced; it is marked *incomplete* if a debate beat or the editor fails, copying persists after retry (or there is no time to retry), or an editor-reported switch of sides has a verified quote.
+
+5. **Stance checks**: code retries a beat once with corrective instructions if its core claim or bottom line copies the opponent’s earlier claims or bottom lines; the rejected output stays only in local raw records, outside subsequent speech history and the card. The editor model judges switches of sides, with code verifying the verbatim evidence; accepting a local point in beat 3 while keeping one’s own bottom line does not count.
 
 ### Run real debates
 
@@ -100,7 +102,7 @@ npm run share -- --cards cards --og _site/og       # optional read-only server w
 
 ### Status & limits
 
-Prototype (v0.1.0). Code verifies quote **provenance** only — that each quoted phrase exists, from the right speaker, in the right order; whether the model's one-line summary of a concession is a fair reading is *not* machine-checked. Side-picks are anonymous cookie-deduped records, not unique people. Cards summarise model arguments; they are not advice or verdicts. `npm test` runs the full suite (no network, no models).
+Prototype (v0.1.0). For quotes, code verifies **provenance** only — that each quoted phrase exists, from the right speaker, in the right order; whether the model's one-line summary of a concession is a fair reading is *not* machine-checked. Switches of sides are judged by the editor model, not guaranteed by code; the copying check measures only literal overlap. Side-picks are anonymous cookie-deduped records, not unique people. Cards summarise model arguments; they are not advice or verdicts. `npm test` runs the full suite (no network, no models).
 
 ---
 
@@ -121,7 +123,9 @@ npm run demo          # Node.js 20+，零依赖
 1. **第 1 拍 盲立论**：双方看不到对方，只为分到的立场立论。
 2. **第 2 拍 点名反驳**：必须反驳对方那一句核心主张（由代码指定，不让模型挑软柿子）。
 3. **第 3 拍 让步与底线**：写明被对方哪一点说服（可以没有），再给一句底线。
-4. **独立编辑**整理成卡。每条让步必须给两段逐字原文（对方论点 + 本方承认），代码按发言编号、说话人、字段和先后顺序核验；编造、改标点、自己引自己、归错人一律剔除；只是复述对方让步（对方承认的其实是自己的论点）的也剔除。没通过核验的让步直接不上卡，一条都没通过时卡上写「未发现可核验的明确让步」。卡片一定会产出；只有某一拍辩论或编辑失败时，才如实标「内容不完整」。
+4. **独立编辑**整理成卡。每条让步必须给两段逐字原文（对方论点 + 本方承认），代码按发言编号、说话人、字段和先后顺序核验；编造、改标点、自己引自己、归错人一律剔除；只是复述对方让步（对方承认的其实是自己的论点）的也剔除。所谓「对方论点」其实是让步方自己此前主张的「自己让自己」，也剔除。没通过核验的让步直接不上卡，一条都没通过时卡上写「未发现可核验的明确让步」。卡片一定会产出；某一拍辩论或编辑失败、照抄重试后仍未纠正（或没时间重试）、编辑判定换边且引文核验通过时，标「内容不完整」。
+
+5. **立场核验**：本拍核心主张或底线照抄对方此前主张或底线时，代码附纠正说明重试一次；被退回的输出只留在本机原始记录，不进入后续发言记录或卡片。换边由编辑模型判断，代码核验逐字引文；第 3 拍承认局部论点但守住己方底线的不算。
 
 ### 真实辩论
 
@@ -140,7 +144,7 @@ npm run demo          # Node.js 20+，零依赖
 
 ### 现状与限制
 
-原型阶段（v0.1.0）。代码只核验引文**出处**（原话存在、说话人和先后顺序正确），不核验模型对让步的一句话概括是否公允。站队是按匿名 Cookie 去重的参与记录，不代表独立人数；卡片是对模型发言的整理，不是建议或裁决。更多机制细节见 [docs/DESIGN.zh.md](docs/DESIGN.zh.md)。
+原型阶段（v0.1.0）。对引文，代码只核验**出处**（原话存在、说话人和先后顺序正确），不核验模型对让步的一句话概括是否公允。换边由编辑模型判断，不是代码保证；照抄检查只看字面重合度。站队是按匿名 Cookie 去重的参与记录，不代表独立人数；卡片是对模型发言的整理，不是建议或裁决。更多机制细节见 [docs/DESIGN.zh.md](docs/DESIGN.zh.md)。
 
 ## License
 

@@ -37,6 +37,11 @@ test('card: fixed 2×3 beats + one editor call, AGREE never ends early, opening 
  try{const r=create(f);f.engine.start(r.id);await settle(r,f.engine);
   assert.equal(r.status,'card');assert.equal(f.calls.filter(c=>c.id!=='j').length,6);assert.equal(f.calls.filter(c=>c.id==='j').length,1);
   const b1=f.calls[1].p;assert.match(b1,/你是 B 方辩手/);assert.doesNotMatch(b1,/视频替代不了/,'B must not see A1 in the blind opening');
+  for(const c of f.calls.filter(c=>c.id!=='j')){
+   if(beatOf(c.p)===1)assert.doesNotMatch(c.p,/不要照抄对方的主张/);
+   else assert.match(c.p,new RegExp(`你方（${sideOf(c.p)} 方）本拍的核心主张，用你自己的话，不要照抄对方的主张`));
+   if(beatOf(c.p)===2)assert.match(c.p,/对方这句只是你要反驳的对象，不能当成你的 claim/);
+  }
   assert.match(f.calls[2].p,/必须正面反驳对方 B1 的核心主张：「春运来回折腾把假期全耗在路上」/);
   assert.deepEqual(r.messages.filter(m=>m.kind==='argument').map(m=>m.meta.ref),['A1','B1','A2','B2','A3','B3']);
   assert.equal(r.card.complete,true);assert.equal(r.card.concessions.length,1);assert.equal(r.card.concessions[0].by,'B');

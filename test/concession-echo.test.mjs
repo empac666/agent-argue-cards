@@ -34,7 +34,7 @@ for(const id of REAL){
    const card=buildCard(r,fx.editor);
    assert.deepEqual(card.concessions.map(x=>`${x.by}:${x.opponentRef}->${x.acceptRef}`),[`A:${a.opponentRef}->A3`]);
    assert.equal(card.rejected.length,1);assert.equal(card.rejected[0].by,'B');assert.match(card.rejected[0].why,ECHO);
-   assert.equal(card.complete,true,'被剔除的让步按既有规则进 rejected，不影响三拍完整性');
+   assert.equal(card.complete,id!=='0069aa79','剔除让步不影响完整性，但 0069aa79 的 B2 照抄 A2 按新规则标为不完整');
    // 与编辑给出的顺序无关
    const rev=buildCard(r,{...fx.editor,concessions:[b,a]});assert.deepEqual(rev.concessions.map(x=>x.by),['A']);assert.match(rev.rejected[0].why,ECHO);
   }finally{rmSync(dir,{recursive:true,force:true});}

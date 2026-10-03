@@ -1,0 +1,157 @@
+{
+ "schema": 1,
+ "id": "b56d86da-4ff2-4402-825b-1514c0a27f98",
+ "short": "b56d86da",
+ "topic": "爸妈帮忙带娃，每月该不该给他们钱？",
+ "facts": "双职工小两口在成都，孩子 1 岁半。男方母亲从老家过来帮忙带娃，和小两口同住，吃住开销由小两口承担。小两口税后合计月入约 3 万；老人有每月约 2000 元退休金，从没开口要过钱，老家还有老伴一个人在家。",
+ "lang": "zh",
+ "createdAt": "2026-10-03T05:16:24.120Z",
+ "card": {
+  "complete": true,
+  "sides": [
+   {
+    "key": "A",
+    "label": "保障派",
+    "stance": "月给老人3000元固定辛苦费，不能以亲情为由白嫖全职劳动。",
+    "bottomLine": "无论逢年过节送了多少心意，每月给老人三千元可以自由支配的辛苦费，这一条绝不能妥协。",
+    "finalClaim": "每月固定给老人三千元辛苦费绝不能免，亲情再浓也不能成为白嫖老人全职劳动的挡箭牌。",
+    "agent": "agy"
+   },
+   {
+    "key": "B",
+    "label": "人情派",
+    "stance": "节日红包加生活照顾表达感激，但拒绝以固定薪酬将亲情商品化。",
+    "bottomLine": "我们绝不以固定薪酬形式把亲情商品化。",
+    "finalClaim": "照顾孙子是亲情义务，不应以每月固定工资形式付酬。",
+    "agent": "agy-gptoss"
+   }
+  ],
+  "concessions": [
+   {
+    "by": "B",
+    "point": "B承认老人需要一定经济支持以保障生活和尊严，包括医疗及照顾老伴的费用",
+    "opponentRef": "A2",
+    "opponentQuote": "老太太想给老家老伴寄点零花钱买点药还得伸手看人脸色",
+    "acceptRef": "B3",
+    "acceptQuote": "我承认老人需要一定的经济支持来保障生活和尊严，尤其是用于医疗和照顾老伴的费用"
+   }
+  ],
+  "concessionNote": "",
+  "unresolved": {
+   "issue": "给老人的经济支持，是该以每月定额到账让老人自由支配，还是以节日红包等弹性方式给予",
+   "quotes": [
+    {
+     "ref": "A3",
+     "quote": "每月给老人三千元可以自由支配的辛苦费，这一条绝不能妥协"
+    },
+    {
+     "ref": "B3",
+     "quote": "我们绝不以固定薪酬形式把亲情商品化"
+    }
+   ]
+  },
+  "unresolvedConfirmed": true,
+  "issues": []
+ },
+ "speeches": [
+  {
+   "ref": "A1",
+   "side": "A",
+   "beat": 1,
+   "claim": "亲妈抛下老伴全职带娃绝不是义务劳动，每月固定给3000元辛苦费，是做子女最起码的体面和良心。",
+   "rebuttal": "",
+   "content": "婆婆把公公一个人撇在老家，背井离乡来成都全天照顾1岁半的娃，做饭抱孩子累得腰酸背痛，这强度去市场上请育儿嫂少说得大几千。咱们小两口税后月入3万，每月固定拿3000元连收入的十分之一都不到，老太太那2000块退休金顾了老家就顾不上自己。别拿‘一家人包吃包住’当遮羞布白嫖老人的全职劳动，手里有属于自己的真金白银，老人在儿媳家住着有尊严，给老家老伴添衣买药也硬气！",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B1",
+   "side": "B",
+   "beat": 1,
+   "claim": "照顾孩子是亲情义务，不能把爱当成雇佣关系来套工资。",
+   "rebuttal": "",
+   "content": "老人每天陪娃六七个小时，还帮忙做饭洗衣，已经把自己的时间、精力全部投入到我们的家庭里；这些付出本身就是对我们生活的支持，额外的固定薪酬反而会让亲情变味。我们可以在节假日送红包、买点心意礼物，或者在生活开销上多点照顾，让感情更温暖，而不是用金钱把爱“量化”。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A2",
+   "side": "A",
+   "beat": 2,
+   "claim": "带孙辈根本不是老人的亲情义务，拿亲情当幌子否定劳动价值，本质上就是对老人付出的道德绑架。",
+   "rebuttal": "对方主张‘照顾孩子是亲情义务’在法理和人情上都完全站不住脚：抚养孩子是年轻父母自己的法定义务，老人放弃退休生活跨城带娃是纯粹的情分而非本分；用‘亲情义务’给全职带娃定性，并拿‘怕感情变味’做借口拒绝固定付酬，实质上是用温情脉脉的话术掩盖对老人重度体力劳动的理所当然与利益盘剥。",
+   "content": "哪门子的亲情义务？抚养孩子是咱们当爹妈的责任，老人把公公一个人撇在老家来成都当全天保姆，是心疼儿子，咱绝不能把情分硬当成本分来白嫖！逢年过节买点礼物塞个红包，主动权全攥在小辈手里，老太太想给老家老伴寄点零花钱买点药还得伸手看人脸色。咱们月入三万每月拿出三千辛苦费，不是雇佣折辱，而是给全职带娃的亲妈一份可以自由支配、有尊严的真金白银！",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B2",
+   "side": "B",
+   "beat": 2,
+   "claim": "亲情互助是自愿的家庭义务，不应被金钱化为雇佣关系。",
+   "rebuttal": "A方把‘亲情义务’全盘否定，等同于道德绑架，却忽视了老人是出于自愿、情感的选择来帮助带娃，这并非法律或合同义务，强行以‘劳动价值’论薪酬会破坏其自愿性和尊严。",
+   "content": "老人跨城帮忙照看孙子，是基于血缘亲情的自愿付出，而不是职业雇佣；把这种情感付出硬套成‘全职劳动’并索要固定薪酬，会把爱商品化，削弱亲情的温度。我们完全可以通过节日红包、生活照顾等方式表达感激，让家庭氛围更温暖，而不是用金钱划分亲情。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A3",
+   "side": "A",
+   "beat": 3,
+   "claim": "每月固定给老人三千元辛苦费绝不能免，亲情再浓也不能成为白嫖老人全职劳动的挡箭牌。",
+   "rebuttal": "",
+   "content": "你总觉得固定给钱是把亲情变成了雇佣，但真正伤感情的，是让背井离乡、全天劳碌的亲妈兜里没钱，给老家老伴寄钱买药还得看小辈脸色。过节买礼物、发红包再有人情味，也只是小辈施予的心意，根本替代不了每月定期到账的安全感。咱们月入三万拿出三千绝不是买断亲情，而是对放弃晚年生活为我们托底的亲妈，最起码的经济保障与做人尊严！",
+   "bottomLine": "无论逢年过节送了多少心意，每月给老人三千元可以自由支配的辛苦费，这一条绝不能妥协。",
+   "conceded": []
+  },
+  {
+   "ref": "B3",
+   "side": "B",
+   "beat": 3,
+   "claim": "照顾孙子是亲情义务，不应以每月固定工资形式付酬。",
+   "rebuttal": "",
+   "content": "老人自愿帮助我们照看孩子，属于情感上的相互支持，金钱化会削弱亲情。我承认老人需要一定的经济支持来保障生活和尊严，尤其是用于医疗和照顾老伴的费用。",
+   "bottomLine": "我们绝不以固定薪酬形式把亲情商品化。",
+   "conceded": [
+    "我承认老人需要一定的经济支持来保障其生活和尊严，尤其是用于医疗和照顾老伴的费用"
+   ]
+  }
+ ],
+ "provenance": {
+  "debaters": [
+   "agy",
+   "agy-gptoss"
+  ],
+  "editor": "agy-claude"
+ },
+ "version": "a6b4d02ec21e",
+ "translations": {
+  "en": {
+   "version": "7485750d859f",
+   "sourceVersion": "a6b4d02ec21e",
+   "note": "Human translation of display text only; verbatim quotes stay in the original language.",
+   "topic": "Grandma minds the baby: should the couple pay her monthly?",
+   "facts": "A dual-income couple in Chengdu with an 18-month-old. His mother came from their hometown to look after the child and lives with them; the couple cover her food and housing. They take home about 30,000 CNY a month combined. She has a pension of about 2,000 CNY, has never asked for money, and her husband is living alone back home.",
+   "sides": [
+    {
+     "label": "Pay-her",
+     "stance": "Give her a fixed 3,000 CNY a month; family love is no excuse to take her full-time childcare for free.",
+     "bottomLine": "However many holiday gifts we give, 3,000 CNY a month that she can spend as she likes is the one thing I won't compromise on."
+    },
+    {
+     "label": "Family-not-payroll",
+     "stance": "Show thanks with holiday red envelopes and looking after her needs, but don't turn family into a salary.",
+     "bottomLine": "We will never turn family love into a commodity with a fixed wage."
+    }
+   ],
+   "concessions": [
+    {
+     "point": "admits she does need some financial support for a secure, dignified life — especially for medical costs and for looking after her husband back home."
+    }
+   ],
+   "unresolved": {
+    "issue": "Support for her: a fixed monthly sum she controls, or flexible gifts like red envelopes?"
+   }
+  }
+ }
+}
