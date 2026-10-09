@@ -1,0 +1,170 @@
+{
+ "schema": 1,
+ "id": "fa2652f3-97b4-49b1-a0e8-3a303048a54e",
+ "short": "fa2652f3",
+ "topic": "五年几乎没涨薪、工作清闲但不能离岗，应该留下还是跳槽？",
+ "facts": "来源为公开论坛帖的发帖者自述，未作独立事实核实：一名程序员在同一份工作五年，薪资几乎没有增长；工作任务很少，但不能离岗；所在地较小，就业机会少，预期跳槽涨幅有限；他认为现岗位晋升和涨薪已难指望。共享背景没有给出实际工资、存款、负债、年龄或已到手的新 offer，双方不得补造这些条件。本场讨论是对该职场取舍的 AI 辩论，不是对发帖者的诊断或求职建议。",
+ "lang": "zh",
+ "createdAt": "2026-10-09T00:51:43.923Z",
+ "card": {
+  "complete": true,
+  "sides": [
+   {
+    "key": "A",
+    "label": "守稳派",
+    "stance": "在机会稀缺、涨幅有限的小地方，清闲岗位的低消耗是实在底牌，没有性价比明显更优的确切机会就不该跳。",
+    "bottomLine": "在没有出现性价比明显更优的确切机会前，绝不为了摆脱停滞的焦虑而放弃低消耗、有稳定收入的清闲岗位。",
+    "finalClaim": "在机会少、涨幅有限的小地方，不能单为了逃避停滞就贸然跳槽，守住低消耗、保底收入的清闲差事才是最实在的底牌。",
+    "agent": "agy"
+   },
+   {
+    "key": "B",
+    "label": "主动找派",
+    "stance": "清闲有价值但不能成为无限期留下的理由，应带着现职主动找、认真挑，不把离开的打算一直拖下去。",
+    "bottomLine": "我绝不接受用眼前的清闲，把主动寻找机会离开长期停滞岗位这件事无限期往后拖。",
+    "finalClaim": "清闲值得算进账，但不能成为无限期留下的理由，仍该主动寻找值得跳的机会。",
+    "agent": "codex-cli"
+   }
+  ],
+  "concessions": [
+   {
+    "by": "A",
+    "point": "A承认继续守在没有晋升和涨薪希望的岗位上确实要承担职业停滞的代价",
+    "opponentRef": "B1",
+    "opponentQuote": "任务少却不能离岗，这份清闲并没有把白天还给你：人得守在岗位上，工资和职业前景却原地踏步。",
+    "acceptRef": "A3",
+    "acceptQuote": "我承认继续守在毫无涨薪和晋升希望的岗位上，确实得承担职业停滞的代价。"
+   },
+   {
+    "by": "B",
+    "point": "B承认当前岗位任务少带来的低消耗有实际价值，评估跳槽时应计入放弃这份清闲的代价",
+    "opponentRef": "A1",
+    "opponentQuote": "活儿极少、心力没被消耗，工资也按月稳稳进账，这就是实打实的避风港。",
+    "acceptRef": "B3",
+    "acceptQuote": "我承认你说的，活少带来的低消耗确实有价值，不能为了离开就随便换个岗位。"
+   }
+  ],
+  "concessionNote": "",
+  "unresolved": {
+   "issue": "清闲的低消耗是继续等待确切机会的正当理由，还是不该成为无限期推迟主动寻找的借口？",
+   "quotes": [
+    {
+     "ref": "A3",
+     "quote": "只要外面的新坑给不出确定划算的性价比，守住这份活少心安的安稳就远比盲目折腾更实在。"
+    },
+    {
+     "ref": "B3",
+     "quote": "我绝不接受用眼前的清闲，把主动寻找机会离开长期停滞岗位这件事无限期往后拖。"
+    }
+   ]
+  },
+  "unresolvedConfirmed": true,
+  "issues": []
+ },
+ "speeches": [
+  {
+   "ref": "A1",
+   "side": "A",
+   "beat": 1,
+   "claim": "在机会少、涨幅有限的小地方，守住这份事少钱稳的清闲差事，远比为了几两碎银去赌未知的新坑划算得多。",
+   "rebuttal": "",
+   "content": "本地总共就那么几个坑，跳过去能多给三五百块？可换来的大概率是没完没了的加班、严苛的考核，以及随时可能踩雷的试用期风险！现在虽然不能离岗，但活儿极少、心力没被消耗，工资也按月稳稳进账，这就是实打实的避风港。五年没涨薪确实憋屈，但为了那点有限的预期涨幅去砸碎现有的安稳，纯属自己找罪受。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B1",
+   "side": "B",
+   "beat": 1,
+   "claim": "五年几乎没涨薪、晋升也难指望，就该主动找机会跳槽，清闲不能当成长期停滞的补偿。",
+   "rebuttal": "",
+   "content": "任务少却不能离岗，这份清闲并没有把白天还给你：人得守在岗位上，工资和职业前景却原地踏步。小地方机会少，更该早点找、慢慢挑，否则再待几年，还是拿着差不多的钱，面对同样少的机会。跳槽不是明天裸辞，而是从现在开始找下家，别把离开的打算一直拖成‘再等等’。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A2",
+   "side": "A",
+   "beat": 2,
+   "claim": "在机会匮乏且涨幅微弱的环境下，把清闲贬为“停滞”去折腾跳槽，只会用极其确定的低消耗换来高风险的高压内耗。",
+   "rebuttal": "对方断言“清闲不能作为长期停滞的补偿而应主动跳槽”错在脱离了客观现实：在就业机会少、预期涨幅有限的小地方，跳槽根本无法带来实质性的职业跃升，反而会平白丢掉清闲岗位带来的低心理消耗与稳定红利。",
+   "content": "你口口声声说清闲抵消不了停滞，可本地天花板就摆在眼前，跳过去难道就能凭空跳出大好前途？现实很可能是涨幅微乎其微，却把原本活少、不费心力的安稳日子，换成了天天打卡考核、加班加点的硬坑。既然换坑换不来真正的成长，守住这份不耗精力的差事才是实实在在的划算。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B2",
+   "side": "B",
+   "beat": 2,
+   "claim": "机会少更该提前找、谨慎挑，不能把当前的清闲当成无限期留下的理由。",
+   "rebuttal": "A方把“机会少、涨幅有限”直接推成“换岗必然没成长、压力必然更大”，这两个结论都没有背景依据。带着现职找机会，并不马上丢掉当前收入；如果找到能积累技能、工作强度也可接受的岗位，即使涨幅有限，也不能说只是拿清闲换内耗。",
+   "content": "你把所有新岗位都说成高压坑，可背景只说机会少，没说个个都比现在差。我的主张是边上班边找，核实职责、强度和成长空间，有值得去的机会再走，哪来的必然丢掉安稳？五年几乎没涨薪、晋升也难指望，继续守着同样有代价，不能只算换工作的风险，把留下的停滞算成零。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A3",
+   "side": "A",
+   "beat": 3,
+   "claim": "在机会少、涨幅有限的小地方，不能单为了逃避停滞就贸然跳槽，守住低消耗、保底收入的清闲差事才是最实在的底牌。",
+   "rebuttal": "",
+   "content": "我承认继续守在毫无涨薪和晋升希望的岗位上，确实得承担职业停滞的代价。但在本地机会稀缺、预期涨幅微弱的现实面前，折腾换坑极可能只是拿微薄的收益换来身心俱疲。只要外面的新坑给不出确定划算的性价比，守住这份活少心安的安稳就远比盲目折腾更实在。",
+   "bottomLine": "在没有出现性价比明显更优的确切机会前，绝不为了摆脱停滞的焦虑而放弃低消耗、有稳定收入的清闲岗位。",
+   "conceded": [
+    "继续守在没有晋升和涨薪希望的现岗位上，确实要承担职业停滞的代价"
+   ]
+  },
+  {
+   "ref": "B3",
+   "side": "B",
+   "beat": 3,
+   "claim": "清闲值得算进账，但不能成为无限期留下的理由，仍该主动寻找值得跳的机会。",
+   "rebuttal": "",
+   "content": "我承认你说的，活少带来的低消耗确实有价值，不能为了离开就随便换个岗位。但机会少、预期涨幅有限，不等于外面一定没有值得去的机会；你也承认留下有停滞的代价，那就不能一直只算换工作的风险。咱们分歧就在这儿：我主张带着现职主动找、认真挑，而不是把清闲当成继续等下去的理由。",
+   "bottomLine": "我绝不接受用眼前的清闲，把主动寻找机会离开长期停滞岗位这件事无限期往后拖。",
+   "conceded": [
+    "当前岗位任务少带来的低消耗有实际价值，评估跳槽时应计入放弃这份清闲的代价。"
+   ]
+  }
+ ],
+ "provenance": {
+  "debaters": [
+   "agy",
+   "codex-cli"
+  ],
+  "editor": "agy-claude"
+ },
+ "version": "6a9f3150daa4",
+ "translations": {
+  "en": {
+   "version": "436e41a8e525",
+   "sourceVersion": "6a9f3150daa4",
+   "note": "AI-assisted English translation of display text, checked against the Chinese source for this publication. Verbatim quotes and the replay stay in the original language.",
+   "topic": "Five years, barely a raise; light work, stuck on site: stay or switch jobs?",
+   "facts": "Based on a public forum poster's account, not independently verified: a programmer has held the same job for five years with almost no pay growth. There is little work, but they must remain at the workplace. They live in a small locality with few job opportunities and expect only a limited pay increase from changing jobs. They see little prospect of promotion or a raise in the current role. Actual salary, savings, debt, age and any firm new job offer are unspecified; neither side may invent them. This AI debate explores the trade-off, rather than assessing the poster or offering job-search advice.",
+   "sides": [
+    {
+     "label": "Stay for stability",
+     "stance": "Where jobs are scarce and potential pay gains are limited, a quiet job's low demands are a real asset. Stay unless a specific opportunity clearly offers a better trade-off.",
+     "bottomLine": "Until a specific opportunity clearly offers a better trade-off, I will not give up a quiet job with low demands and steady income just to escape anxiety about stagnation."
+    },
+    {
+     "label": "Actively look",
+     "stance": "A quiet job has value, but cannot justify staying indefinitely. Look actively and choose carefully while keeping the current job, rather than endlessly postponing the plan to leave.",
+     "bottomLine": "I will not accept using today's quiet workload to keep putting off the active search for a way out of a role that has long offered no growth."
+    }
+   ],
+   "concessions": [
+    {
+     "point": "A acknowledges that staying in a role with no prospect of promotion or pay growth carries a cost in career stagnation."
+    },
+    {
+     "point": "B acknowledges that the current job's light workload has real value; weighing a job change must include the cost of giving up that ease."
+    }
+   ],
+   "unresolved": {
+    "issue": "Does a quiet job's low demand justify waiting for a specific opportunity, or should it never become an excuse to postpone an active search indefinitely?"
+   }
+  }
+ }
+}
