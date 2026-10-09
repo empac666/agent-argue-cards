@@ -1,0 +1,142 @@
+{
+ "schema": 1,
+ "id": "2433210d-fb55-46c0-9d3b-1d85fe0ff89a",
+ "short": "2433210d",
+ "topic": "邻居反复不付共享 WiFi 费用，能直接改密码断开，还是应先明确通知再停止？",
+ "facts": "来源为公开 Reddit 帖的发帖者自述，未作独立事实核实：发帖者与邻居约定共享 WiFi 并分摊费用；邻居最初两个月按时付钱，后来断断续续付款。发帖者改用更贵的新网络后，称邻居从五月到十月只付了两次。十月一日，她更改 WiFi 名称和密码，断开邻居设备；约两小时后，邻居带着钱包上门询问欠款并表示想当场补付。她没有说明自己改了密码，而称运营商因未付款停网；两天后仍未回复，也不打算回复。本场只讨论反复不付约定费用后，能直接停止共享还是应先明确通知再停止；不讨论是否必须继续共享，也不替隐瞒事实辩护。原帖没有给出欠款金额、明确付款截止日、此前是否发过明确的停用通知或有何紧急用途；不得补造这些条件、邻居经济状况、法律责任或网络安全事件。不以原帖人物的年龄、性别或家庭身份论证。",
+ "lang": "zh",
+ "createdAt": "2026-10-09T02:32:55.471Z",
+ "card": {
+  "complete": true,
+  "sides": [
+   {
+    "key": "A",
+    "label": "即断派",
+    "stance": "反复违约已破坏共享基础，守约方随时直接断开止损，无需事前通知。",
+    "bottomLine": "面对反复违约，守约方随时直接断开止损的权利绝不容让步，违约拖欠者无权要求任何事前停用通知。",
+    "finalClaim": "长期反复拖欠已经彻底破坏了共享信任，受损方随时直接改密断开是完全正当的止损权利，没有任何义务在断开前打招呼。",
+    "agent": "agy"
+   },
+   {
+    "key": "B",
+    "label": "告知派",
+    "stance": "欠费足以终止共享，但断开前必须明确告知停止决定和停用时间。",
+    "bottomLine": "可以坚决停止共享，但断开前必须明确告知停止共享和停用时间。",
+    "finalClaim": "反复欠费足以结束共享，但结束前仍该把决定和停用时间说清楚。",
+    "agent": "codex-cli"
+   }
+  ],
+  "concessions": [],
+  "concessionNote": "未发现可核验的明确让步",
+  "unresolved": {
+   "issue": "停止共享的正当依据是守约方的单方止损权，还是对方有权提前获知停用决定。",
+   "quotes": [
+    {
+     "ref": "A3",
+     "quote": "直接断开就是对反复拖欠最干脆的回应，断后如实告知原因足够体面，事前通知绝不是守约方的义务。"
+    },
+    {
+     "ref": "B3",
+     "quote": "欠费是停止共享的理由，却不能替代明确的停用通知。"
+    }
+   ]
+  },
+  "unresolvedConfirmed": true,
+  "issues": []
+ },
+ "speeches": [
+  {
+   "ref": "A1",
+   "side": "A",
+   "beat": 1,
+   "claim": "约定分摊是共享网络的前提，对方五月到十月反复拖欠只付了两次，随时直接改密码断开合情合理，根本没义务提前打招呼。",
+   "rebuttal": "",
+   "content": "五月到十月大半年只付两次钱，前面也是断断续续付款，谁也没闲心每个月追在别人屁股后面当催收。断网才两个小时就能揣着钱包找上门说要补付，说明对方心里对欠费门清，纯粹是还能蹭就拖着、网停了才着急。既然是对方反复违约在先，就该承受随时断开的后果，断了之后如实说清楚原因就行，凭什么还要供网的人提前专门通知、低声下气给宽限？",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B1",
+   "side": "B",
+   "beat": 1,
+   "claim": "反复不付钱可以终止共享，但断开前必须把停止共享和停用时间明确告诉邻居。",
+   "rebuttal": "",
+   "content": "从五月到十月只付两次，这笔钱不能总让发帖者垫着；直接说清楚“以后不再共享，几点停用”，才能把付费争执变成明确的结束。改密码却不提前说，对方只会先查设备、查网络，再跑来敲门——原帖里两小时后就找上门了。通知不是催款到天荒地老，是让对方知道该自己找网络，也省得你断完还得应付“怎么突然连不上”。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A2",
+   "side": "A",
+   "beat": 2,
+   "claim": "分摊费用是共享网络的硬性前提，面对数月反复违约，直接断网是正当的即刻止损，守约方没有任何义务提前提供停用倒计时。",
+   "rebuttal": "对方主张断开前必须明确告知停用时间，错在把原本基于诚信的邻里互助偷换成了正规商业服务，把维权成本全部甩给守约垫钱的一方。五月到十月反复拖欠只付两次，共享的基础早就被对方单方面破坏，强求提前预告停用时间，只会让被拖欠方陷入新一轮的尴尬拉扯和被动催费。",
+   "content": "对方非要按头让人提前给停用时间，纯粹是把邻里帮忙当成了运营商客服，反过来道德绑架一直垫钱的人。五月到十月大半年只掏过两次钱，对方早就把共享规则踩在脚下，断网本就是长期违约应得的即时后果，凭什么还得恭恭敬敬报备倒计时？直接掐断是停止被占便宜最干脆的办法，断完如实说明就行，根本用不着在断网前自找麻烦去招揽扯皮。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "B2",
+   "side": "B",
+   "beat": 2,
+   "claim": "反复欠费足以结束共享，但不能替代停用通知；断开前说清决定和时间，不等于继续免费供网或协商宽限。",
+   "rebuttal": "A方把“有理由停止共享”直接推成“可以省掉事先告知”，这一步不成立。原帖没有给出明确付款截止日，也没有说明此前发过停用通知，不能把欠费自动当成对方已经知道何时断网。通知可以是单向告知，不必征求同意，更不必开启新一轮催款。",
+   "content": "欠钱能说明这网不该继续共享，可说明不了对方已经知道你哪一刻会停。发一句“共享到今天几点结束，之后请自行安排网络”，怎么就成了运营商客服、低声下气报备？你可以把决定说死，也不用答应补钱后恢复；先通知再改密码，一样能结束这笔垫付。",
+   "bottomLine": "",
+   "conceded": []
+  },
+  {
+   "ref": "A3",
+   "side": "A",
+   "beat": 3,
+   "claim": "长期反复拖欠已经彻底破坏了共享信任，受损方随时直接改密断开是完全正当的止损权利，没有任何义务在断开前打招呼。",
+   "rebuttal": "",
+   "content": "对方几个月断断续续拖欠、大半年只付两次钱的时候，可从来没主动提前通知过垫钱的人。共享网络全凭彼此守信，对方自己先一次次打破约定，就别指望别人在断网止损前还得客客气气提前报备。直接断开就是对反复拖欠最干脆的回应，断后如实告知原因足够体面，事前通知绝不是守约方的义务。",
+   "bottomLine": "面对反复违约，守约方随时直接断开止损的权利绝不容让步，违约拖欠者无权要求任何事前停用通知。",
+   "conceded": []
+  },
+  {
+   "ref": "B3",
+   "side": "B",
+   "beat": 3,
+   "claim": "反复欠费足以结束共享，但结束前仍该把决定和停用时间说清楚。",
+   "rebuttal": "",
+   "content": "你说“欠费时没提前通知，所以断网也不用通知”，可结束共享不是照着对方的失礼还回去。发一句“今天几点停止共享”，是在告知决定，哪用得着客客气气求同意，更不用接着催款或答应恢复。欠费是停止共享的理由，却不能替代明确的停用通知。",
+   "bottomLine": "可以坚决停止共享，但断开前必须明确告知停止共享和停用时间。",
+   "conceded": []
+  }
+ ],
+ "provenance": {
+  "debaters": [
+   "agy",
+   "codex-cli"
+  ],
+  "editor": "agy-claude"
+ },
+ "version": "7632ae9ed5b0",
+ "translations": {
+  "en": {
+   "version": "895d35c60fcf",
+   "sourceVersion": "7632ae9ed5b0",
+   "note": "AI-assisted English translation of display text, checked against the Chinese source for this publication. Verbatim quotes and the replay stay in the original language.",
+   "topic": "Neighbours keep missing WiFi payments: cut access or give notice?",
+   "facts": "Based on a public Reddit poster's account, not independently verified: neighbours agreed to share WiFi costs. They initially paid regularly, then intermittently. After a switch to a pricier connection, they paid only twice from May to October. On Oct 1 the poster changed the WiFi name and password; about two hours later a neighbour offered to settle. The poster blamed a provider disconnection for non-payment and had not replied two days later. The debate concerns advance notice, not a duty to keep sharing or a defence of deception. Amounts owed, payment deadlines, prior explicit cutoff notices and urgent uses are unspecified. Neither side may invent these details, finances, legal duties or security incidents, or argue from age, gender or family roles.",
+   "sides": [
+    {
+     "label": "Cut access now",
+     "stance": "Repeated non-payment breaks the agreement; cut access without prior notice.",
+     "bottomLine": "After repeated failure to honour the agreement, the paying party may cut access at any time and owes no advance notice."
+    },
+    {
+     "label": "Notify first",
+     "stance": "Non-payment justifies ending sharing, but announce the cutoff first.",
+     "bottomLine": "You may firmly end sharing, but must explicitly announce the decision and cutoff time before disconnecting."
+    }
+   ],
+   "concessions": [],
+   "unresolved": {
+    "issue": "May the payer cut WiFi at will, or is prior notice always required?"
+   }
+  }
+ }
+}
