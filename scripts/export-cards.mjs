@@ -71,7 +71,7 @@ export async function site(o={}){
     if(!o['no-og']){const ogName=`${d.id}${suffix}.png`;const {png}=await htmlToPng(renderOgHtml(d,{lang}),{width:1200,height:630});await writeFile(inside(`og/${ogName}`),png);og=`og/${ogName}`;}
     const other=langs.find(l=>l!==lang);
     const html=renderStaticCard(d,{lang,baseUrl,path:`cards/${name}`,ogImage:og?(baseUrl?og:`../${og}`):'',indexHref:'../index.html',giscus:cfg.giscus?.enabled?cfg.giscus:null,
-     altHref:other?(other===d.lang?`${d.id}.html`:`${d.id}.${other}.html`):'',altLabel:other==='en'?'English':other==='zh'?'中文':''});
+     altHref:other?(other===d.lang?`${d.id}.html`:`${d.id}.${other}.html`):'',altLabel:other==='en'?'English':other==='zh'?'中文':'',sourcesHref:cfg.sourcesByCard?.[d.id]||''});
     await writeFile(inside(`cards/${name}`),html);pages.push(path.join(out,'cards',name));
    }
   }

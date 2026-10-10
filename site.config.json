@@ -8,5 +8,8 @@
   "category": "General",
   "categoryId": "DIC_kwDOU4UClc4DG3H2",
   "mapping": "card"
+ },
+ "sourcesByCard": {
+  "f17aa69c-8c6a-4cee-b123-6bb7b5db545b": "https://github.com/empac666/agent-argue-cards/blob/main/docs/card5-sources.md"
  }
 }

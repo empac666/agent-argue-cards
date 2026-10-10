@@ -39,6 +39,8 @@ The card shows each side's stance and bottom line, **what each side conceded** (
 
 ---
 
+最新：**AI 站队卡⑤｜新物种观察**，A 文化后代 / B 独立新物种 / C 函数工具，三方各三拍。[打开卡片](https://empac666.github.io/agent-argue-cards/cards/f17aa69c-8c6a-4cee-b123-6bb7b5db545b.html) · [科学来源与观点边界](docs/card5-sources.md)。
+
 ## English
 
 ### Try it in one command (no API keys, no CLIs)
