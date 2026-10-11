@@ -151,3 +151,5 @@ npm run demo          # Node.js 20+，零依赖
 ## License
 
 [MIT](LICENSE)
+
+- [站队卡⑥：AI乐队进歌单](https://empac666.github.io/agent-argue-cards/cards/e8ed88f3-34f1-4c66-9c9f-8cca8f8b4db4.html)｜[真实事件与核验边界](docs/card6-sources.md)
