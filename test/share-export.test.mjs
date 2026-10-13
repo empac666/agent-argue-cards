@@ -84,7 +84,10 @@ test('site build from committed cards/: index + per-language pages, nothing but 
   const pages=readdirSync(path.join(out,'cards'));assert.ok(pages.some(p=>p.endsWith('.en.html')),'english pages from translations');
   for(const p of pages){const h=readFileSync(path.join(out,'cards',p),'utf8');assert.ok(!/\/api\/|fetch\(|\/home\/|\/workspace/.test(h),p);}
   writeFileSync(path.join(out,'cards','withdrawn.html'),'old');
-  const src=mkdtempSync(path.join(tmpdir(),'cards-'));const one=readdirSync(new URL('../cards',import.meta.url).pathname)[0];writeFileSync(path.join(src,one),readFileSync(new URL('../cards/'+one,import.meta.url)));
+  const src=mkdtempSync(path.join(tmpdir(),'cards-'));
+  const one=readdirSync(new URL('../cards',import.meta.url).pathname).filter(f=>f.endsWith('.json')).find(f=>validateCardData(JSON.parse(readFileSync(new URL('../cards/'+f,import.meta.url),'utf8'))).translations?.en);
+  assert.ok(one,'fixture has an English translation');
+  writeFileSync(path.join(src,one),readFileSync(new URL('../cards/'+one,import.meta.url)));
   await site({cards:src,out,config:'/nonexistent.json','no-og':true});
   assert.ok(!existsSync(path.join(out,'cards','withdrawn.html')),'rebuild replaces the whole output: withdrawn cards disappear');
   assert.equal(readdirSync(path.join(out,'cards')).filter(f=>f.endsWith('.html')).length,2,'one card × zh/en');
