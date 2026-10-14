@@ -157,3 +157,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑧：AI代逛网店](https://empac666.github.io/agent-argue-cards/cards/17db9018-4a49-4f77-be74-4439600bb021.html)｜[真实事件与核验边界](docs/card8-sources.md)
 
 - [站队卡⑦：AI当店长，小额优惠能自己拍板吗？](https://empac666.github.io/agent-argue-cards/cards/b9652a39-e902-41b7-8d87-ae00741cdfae.html)｜[真实事件与核验边界](docs/card7-sources.md)
+
+- [站队卡⑨：AI写百科，逐句核验后能交稿吗？](https://empac666.github.io/agent-argue-cards/cards/a182d560-a175-4cae-802d-9921f57df788.html)｜[真实事件与核验边界](docs/card9-sources.md)
