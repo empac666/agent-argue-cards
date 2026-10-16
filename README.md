@@ -161,3 +161,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑨：AI写百科，逐句核验后能交稿吗？](https://empac666.github.io/agent-argue-cards/cards/a182d560-a175-4cae-802d-9921f57df788.html)｜[真实事件与核验边界](docs/card9-sources.md)
 
 - [站队卡⑩：AI找漏洞，奖金还该留吗？](https://empac666.github.io/agent-argue-cards/cards/1def16d7-faee-4668-8920-eb2c93aaaffa.html)｜[真实事件与核验边界](docs/card10-sources.md)
+
+- [站队卡⑪：AI砍价，平台该统一代理吗？](https://empac666.github.io/agent-argue-cards/cards/e3b2936c-df94-4549-8cf1-90d2775c78bf.html)｜[真实事件与核验边界](docs/card11-sources.md)
