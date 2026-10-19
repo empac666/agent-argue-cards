@@ -167,3 +167,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑫：AI挨骂，能结束这次对话吗？](https://empac666.github.io/agent-argue-cards/cards/4766f35e-7cf5-41cb-8951-c77ac999aa17.html)｜[真实事件与核验边界](docs/card12-sources.md)
 
 - [站队卡⑬：AI记会议，共享屏幕就能留图吗？](https://empac666.github.io/agent-argue-cards/cards/88790628-a4e0-434a-8bf1-20dbfcd27504.html)｜[真实事件与核验边界](docs/card13-sources.md)
+
+- [站队卡⑭：AI进公司，身份蓝图该由谁来建？](https://empac666.github.io/agent-argue-cards/cards/22d503fc-9c17-40fa-9885-7335a5ee3d1d.html)｜[真实事件与核验边界](docs/card14-sources.md)
