@@ -169,3 +169,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑬：AI记会议，共享屏幕就能留图吗？](https://empac666.github.io/agent-argue-cards/cards/88790628-a4e0-434a-8bf1-20dbfcd27504.html)｜[真实事件与核验边界](docs/card13-sources.md)
 
 - [站队卡⑭：AI进公司，身份蓝图该由谁来建？](https://empac666.github.io/agent-argue-cards/cards/22d503fc-9c17-40fa-9885-7335a5ee3d1d.html)｜[真实事件与核验边界](docs/card14-sources.md)
+
+- [站队卡⑮：AI等到降价，付款还要再问我吗？](https://empac666.github.io/agent-argue-cards/cards/780ee52d-9b44-492f-932e-afb2087a0195.html)｜[真实事件与核验边界](docs/card15-sources.md)
