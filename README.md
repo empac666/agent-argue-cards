@@ -175,3 +175,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑯：AI推荐：我说少看，点击还能改口吗？](https://empac666.github.io/agent-argue-cards/cards/aa3974a0-2c88-49eb-9d98-cd9bb552abe3.html)｜[真实事件与核验边界](docs/card16-sources.md)
 
 - [站队卡⑰：AI网关：客户密钥在手，还要厂家先批才能转？](https://empac666.github.io/agent-argue-cards/cards/50166ab8-6076-477d-8829-86be2bdd2756.html)｜[真实事件与核验边界](docs/card17-sources.md)
+
+- [站队卡⑱：Anthropic驻场评估：报告删什么，厂家能最终说了算吗？](https://empac666.github.io/agent-argue-cards/cards/8be1f5db-5aab-45fc-91d5-19e6cbd8dd2f.html)｜[真实事件与核验边界](docs/card18-sources.md)
