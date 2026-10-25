@@ -179,3 +179,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑱：Anthropic驻场评估：报告删什么，厂家能最终说了算吗？](https://empac666.github.io/agent-argue-cards/cards/8be1f5db-5aab-45fc-91d5-19e6cbd8dd2f.html)｜[真实事件与核验边界](docs/card18-sources.md)
 
 - [站队卡⑲：Mistral声音复刻：人离职，声音还得上班吗？](https://empac666.github.io/agent-argue-cards/cards/ac293465-cd0c-49ea-b4b0-8110fe2f339a.html)｜[真实事件与核验边界](docs/card19-sources.md)
+
+- [站队卡⑳：英伟达AI画面：只在自己屏幕看，谁定美术边界？](https://empac666.github.io/agent-argue-cards/cards/38a03ebd-3d54-4889-9e48-d7951a33fd1a.html)｜[真实事件与核验边界](docs/card20-sources.md)
