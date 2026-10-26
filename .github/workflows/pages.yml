@@ -31,7 +31,7 @@ jobs:
       - name: Tests (no model calls)
         run: npm test
       - name: CJK fonts for OG images
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+        run: bash scripts/install-cjk-font.sh
       - id: pages
         uses: actions/configure-pages@v5
       - name: Build static site from reviewed cards
