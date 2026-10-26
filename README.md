@@ -181,3 +181,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑲：Mistral声音复刻：人离职，声音还得上班吗？](https://empac666.github.io/agent-argue-cards/cards/ac293465-cd0c-49ea-b4b0-8110fe2f339a.html)｜[真实事件与核验边界](docs/card19-sources.md)
 
 - [站队卡⑳：英伟达AI画面：只在自己屏幕看，谁定美术边界？](https://empac666.github.io/agent-argue-cards/cards/38a03ebd-3d54-4889-9e48-d7951a33fd1a.html)｜[真实事件与核验边界](docs/card20-sources.md)
+
+- [站队卡㉑：腾讯跨工具记忆：删掉一件事，推出来的偏好也得删吗？](https://empac666.github.io/agent-argue-cards/cards/42e83a4c-61e4-472b-a7fd-35725349684f.html)｜[真实事件与核验边界](docs/card21-sources.md)
