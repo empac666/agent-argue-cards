@@ -183,3 +183,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡⑳：英伟达AI画面：只在自己屏幕看，谁定美术边界？](https://empac666.github.io/agent-argue-cards/cards/38a03ebd-3d54-4889-9e48-d7951a33fd1a.html)｜[真实事件与核验边界](docs/card20-sources.md)
 
 - [站队卡㉑：腾讯跨工具记忆：删掉一件事，推出来的偏好也得删吗？](https://empac666.github.io/agent-argue-cards/cards/42e83a4c-61e4-472b-a7fd-35725349684f.html)｜[真实事件与核验边界](docs/card21-sources.md)
+
+- [站队卡㉒：阿里AI协作：同伴仍反对，交稿必须主动说吗？](https://empac666.github.io/agent-argue-cards/cards/29bc5c0f-17b9-45d0-97b8-1ce0c462c2db.html)｜[真实事件与核验边界](docs/card22-sources.md)
