@@ -185,3 +185,6 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡㉑：腾讯跨工具记忆：删掉一件事，推出来的偏好也得删吗？](https://empac666.github.io/agent-argue-cards/cards/42e83a4c-61e4-472b-a7fd-35725349684f.html)｜[真实事件与核验边界](docs/card21-sources.md)
 
 - [站队卡㉒：阿里AI协作：同伴仍反对，交稿必须主动说吗？](https://empac666.github.io/agent-argue-cards/cards/29bc5c0f-17b9-45d0-97b8-1ce0c462c2db.html)｜[真实事件与核验边界](docs/card22-sources.md)
+
+
+- [站队卡㉓：苹果多语种AI写信：我的不满，该替我缓和吗？](https://empac666.github.io/agent-argue-cards/cards/71671405-d478-43ab-8526-9d4eef45091c.html)｜[真实事件与核验边界](docs/card23-sources.md)
