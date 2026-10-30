@@ -190,3 +190,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡㉓：苹果多语种AI写信：我的不满，该替我缓和吗？](https://empac666.github.io/agent-argue-cards/cards/71671405-d478-43ab-8526-9d4eef45091c.html)｜[真实事件与核验边界](docs/card23-sources.md)
 
 - [站队卡㉔：xAI销售AI跟进：客户不回，还该再问一次吗？](https://empac666.github.io/agent-argue-cards/cards/7c844f77-b691-4834-bd55-e4744a952a7c.html)｜[真实事件与核验边界](docs/card24-sources.md)
+
+- [站队卡㉕：Cohere检索新功能：找到答案后，该给下一个AI全文吗？](https://empac666.github.io/agent-argue-cards/cards/b8e03ce9-54fe-4c56-94ee-c0000b4c0f70.html)｜[真实事件与核验边界](docs/card25-sources.md)
