@@ -1,3 +1,4 @@
+import {fileURLToPath} from 'node:url';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
@@ -79,13 +80,13 @@ test('static card page: data embedded, no backend calls, OG meta, script-safe, g
 test('site build from committed cards/: index + per-language pages, nothing but generated files',async()=>{
  const out=mkdtempSync(path.join(tmpdir(),'site-'));
  try{
-  const r=await site({cards:new URL('../cards',import.meta.url).pathname,out,config:'/nonexistent.json','no-og':true});
+  const r=await site({cards:fileURLToPath(new URL('../cards',import.meta.url)),out,config:'/nonexistent.json','no-og':true});
   assert.ok(r.cards>=2);assert.ok(existsSync(path.join(out,'index.html')));assert.ok(existsSync(path.join(out,'.nojekyll')));
   const pages=readdirSync(path.join(out,'cards'));assert.ok(pages.some(p=>p.endsWith('.en.html')),'english pages from translations');
   for(const p of pages){const h=readFileSync(path.join(out,'cards',p),'utf8');assert.ok(!/\/api\/|fetch\(|\/home\/|\/workspace/.test(h),p);}
   writeFileSync(path.join(out,'cards','withdrawn.html'),'old');
   const src=mkdtempSync(path.join(tmpdir(),'cards-'));
-  const one=readdirSync(new URL('../cards',import.meta.url).pathname).filter(f=>f.endsWith('.json')).find(f=>validateCardData(JSON.parse(readFileSync(new URL('../cards/'+f,import.meta.url),'utf8'))).translations?.en);
+  const one=readdirSync(fileURLToPath(new URL('../cards',import.meta.url))).filter(f=>f.endsWith('.json')).find(f=>validateCardData(JSON.parse(readFileSync(new URL('../cards/'+f,import.meta.url),'utf8'))).translations?.en);
   assert.ok(one,'fixture has an English translation');
   writeFileSync(path.join(src,one),readFileSync(new URL('../cards/'+one,import.meta.url)));
   await site({cards:src,out,config:'/nonexistent.json','no-og':true});
