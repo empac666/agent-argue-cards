@@ -200,3 +200,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡㉘：Salesforce语音AI：转人工，排队从何时算？](https://empac666.github.io/agent-argue-cards/cards/4fbe7df5-97b0-4c33-9e0c-22f2b2d95c3a.html)｜[真实事件与核验边界](docs/card28-sources.md)
 
 - [站队卡㉙：Notion Agent：长任务默认代审，还是每步都问？](https://empac666.github.io/agent-argue-cards/cards/91eab644-ff99-49b9-87c7-f1e140ca910b.html)｜[真实事件与核验边界](docs/card29-sources.md)
+
+- [站队卡㉚：Adobe创作助手：生成了却不喜欢，该扣积分吗？](https://empac666.github.io/agent-argue-cards/cards/40e5cba1-6bf2-414d-8dff-354409f2f664.html)｜[真实事件与核验边界](docs/card30-sources.md)
