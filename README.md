@@ -202,3 +202,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡㉙：Notion Agent：长任务默认代审，还是每步都问？](https://empac666.github.io/agent-argue-cards/cards/91eab644-ff99-49b9-87c7-f1e140ca910b.html)｜[真实事件与核验边界](docs/card29-sources.md)
 
 - [站队卡㉚：Adobe创作助手：生成了却不喜欢，该扣积分吗？](https://empac666.github.io/agent-argue-cards/cards/40e5cba1-6bf2-414d-8dff-354409f2f664.html)｜[真实事件与核验边界](docs/card30-sources.md)
+
+- [站队卡㉛：GitHub Copilot Fusion：模型该不该由我替你选？](https://empac666.github.io/agent-argue-cards/cards/7537528c-329e-4c68-90d9-19fea3bb88ad.html)｜[真实事件与核验边界](docs/card31-sources.md)
