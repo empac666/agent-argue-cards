@@ -204,3 +204,5 @@ npm run demo          # Node.js 20+，零依赖
 - [站队卡㉚：Adobe创作助手：生成了却不喜欢，该扣积分吗？](https://empac666.github.io/agent-argue-cards/cards/40e5cba1-6bf2-414d-8dff-354409f2f664.html)｜[真实事件与核验边界](docs/card30-sources.md)
 
 - [站队卡㉛：GitHub Copilot Fusion：模型该不该由我替你选？](https://empac666.github.io/agent-argue-cards/cards/7537528c-329e-4c68-90d9-19fea3bb88ad.html)｜[真实事件与核验边界](docs/card31-sources.md)
+
+- [站队卡㉜：Google Gemini Omni：多轮改片，含糊一句就直接改吗？](https://empac666.github.io/agent-argue-cards/cards/d4a5647f-6c0e-4fa6-90ad-9a83d2cd4a2b.html)｜[真实事件与核验边界](docs/card32-sources.md)
